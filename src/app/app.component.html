@@ -6,11 +6,12 @@
 					<img src="/assets/Frame.svg" alt="image">
 				</div>
 				<nav class="header-nav">
-					<div class="header-nav-item">{{headerItem1}}</div>
+					<div class="header-nav-item" routerLink="/">{{headerItem1}}</div>
 					<div class="header-nav-item">{{aboutCompany}}</div>
 					<div class="header-nav-item" *ngIf="isShowCatalog">{{headerItem3}}</div>
 				</nav>
 				<button (click)="isShowCatalog = !isShowCatalog">Скрыть/Показать каталог</button>
+				<button class="admin-btn" routerLink="/users">Админка</button>
 			</div>
 			<div class="header-right">
 				<div class="header-right-phone">
@@ -28,41 +29,4 @@
 		</div>
 	</div>
 </div>
-<button (click)="isShowBigImg = !isShowBigImg">Скрыть/Показать Мужика</button>
-<div class="bg-man" *ngIf="isShowBigImg">
-	<img src="/assets/Rectangle-5.png" alt="bg-man">
-</div>
-<div class="item-cards">
-	<div class="container">
-		<div class="item-cards__pagination">
-			<button class="item-cards__pagination-button active-button" *ngFor="let item of paginations">{{item}}</button>
-		</div>
-		<div class="item-cards__grid">
-
-			<div class="item-cards__grid-left">
-				Строительный отделочный инструмент
-				<div class="item-cards__grid-left-catalog grid-catalog">Перейти в каталог</div>
-			</div>
-
-			<div class="item-cards__grid-right">
-				<div class="item-cards__grid-right-block grid-right-block-1">
-					Эмали
-					<div class="item-cards__grid-right-catalog grid-catalog">Перейти в каталог</div>
-				</div>
-				<div class="item-cards__grid-right-block grid-right-block-2">
-					Лакокрасочные <br> материалы
-					<div class="item-cards__grid-right-catalog grid-catalog">Перейти в каталог</div>
-				</div>
-				<div class="item-cards__grid-right-block grid-right-block-3">
-					Пены, клеи и <br> герметики
-					<div class="item-cards__grid-right-catalog grid-catalog">Перейти в каталог</div>
-				</div>
-				<div class="item-cards__grid-right-block grid-right-block-4">
-					Розетки и выключатели
-					<div class="item-cards__grid-right-catalog grid-catalog">Перейти в каталог</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-  
+<router-outlet></router-outlet>

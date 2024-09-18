@@ -2,10 +2,6 @@
 
 <div class="wrapper">
 	<div class="users-cards" *ngFor="let item of users">
-		<p>{{$any(item).name}}</p>
-		<p>{{$any(item).email}}</p>
-		<p>{{$any(item).website}}</p>
-		<p>{{$any(item).company.name}}</p>
-		<button class="cards-btn" (click)="deleteUser(item.id)">delete</button>
+		<app-user-card [user]="item" (deleteUser)="deleteUser($event)"></app-user-card>
 	</div>
 </div>

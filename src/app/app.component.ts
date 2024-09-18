@@ -22,6 +22,8 @@ export class AppComponent {
 	readonly headerItem2 = 'О компании';
 	readonly headerItem3 = 'Каталог';
 
+	readonly navigationitems = ['Каталог', 'Стройматериалы', 'Инструменты', 'Электрика', 'Интерьер и одежда']
+
 	aboutCompany = navItem;
 
 }

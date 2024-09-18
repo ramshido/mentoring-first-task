@@ -20,12 +20,11 @@ html,body{
 	width: 100%;
 	font-size: 100%;
 	line-height: 1;
-	font-size: 14px;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
-input,button,textarea{font-family:inherit;}
+input,button,textarea{font-family:inherit; background: inherit;}
 
 input::-ms-clear{display: none;}
 button{cursor: pointer;}
@@ -39,6 +38,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 .container {
 	max-width: 1440px;
+	width: 100%;
 	margin: 0 auto;
 	padding: 0 60px;
 }

@@ -1,10 +1,17 @@
 .bg-man {
-	max-width: 1920px;
 	margin: 0 auto;
-
 	img {
 		width: 100%;
 	}
+}
+
+.hide-bg {
+	display: block;
+	height: 25px;
+	border: 1px solid #3c3c3b;
+	width: 250px;
+	border-radius: 5px;
+	margin: 15px auto;
 }
 
 .item-cards {

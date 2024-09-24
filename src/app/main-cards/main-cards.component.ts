@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { NgFor, NgIf } from '@angular/common';
-import { BehaviorSubject, map, of } from "rxjs";
 
 
 const itemCardsPagination = [1, 2, 3, 4, 5];
 itemCardsPagination.reverse();
 
 ///////////////////////////////////
+
+//--------------------------------------------- Ts
 
 
 

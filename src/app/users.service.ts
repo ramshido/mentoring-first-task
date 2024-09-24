@@ -5,36 +5,37 @@ import { BehaviorSubject } from "rxjs";
 @Injectable({ providedIn: 'root' })
 
 export class UsersService {
-	usersSubject = new BehaviorSubject<IUser[]>([]);
+	  private readonly usersSubject$ = new BehaviorSubject<IUser[]>([]);
+	  public readonly usersObservable$ = this.usersSubject$.asObservable();
 	// users: IUser[] = [];
 
-	setUser(users: IUser[]) {
+	getUser(users: IUser[]) {
 		// this.users = users;
-		this.usersSubject.next(users)
+		this.usersSubject$.next(users)
 	}
 
 	editUser(editedUser: IUser) {
 		// this.users = this.users.map(
 		// 	item => (item.id === editedUser.id) ? editedUser : item
 		// );
-		this.usersSubject.next(
-			this.usersSubject.value.map(
+		this.usersSubject$.next(
+			this.usersSubject$.value.map(
 				item => (item.id === editedUser.id) ? editedUser : item
 			)
 		);
 	}
 
-	createUser(user: IUser) {
+	addUser(user: IUser) {
 		// this.users = [...this.users, user];
 		// или можем использовать concat - this.users = this.users.concat([user])
 
-		this.usersSubject.next([...this.usersSubject.value, user]);
+		this.usersSubject$.next([...this.usersSubject$.value, user]);
 	}
 	deleteUser(userId: number) {
 		// this.users = this.users.filter((item) => item.id !== userId);
 
-		this.usersSubject.next(
-			this.usersSubject.value.filter(item => item.id !== userId)
+		this.usersSubject$.next(
+			this.usersSubject$.value.filter(item => item.id !== userId)
 		);
 	}
 }

@@ -46,7 +46,7 @@ export class UsersListComponent {
 
 	constructor() {
 		this.usersApiService.getUsers().subscribe((response: any) => {
-			this.usersService.setUser(response);
+			this.usersService.getUser(response);
 		});
 
 		// this.usersService.usersSubject.subscribe(

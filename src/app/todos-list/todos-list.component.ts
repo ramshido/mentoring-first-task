@@ -25,7 +25,7 @@ export class TodosListComponent {
 
 
 	constructor() {
-		this.todosApiService.getTodos().subscribe((response: any) => this.todosService.setTodo(response))
+		this.todosApiService.getTodos().subscribe((response: any) => this.todosService.getTodo(response))
 		
 	}
 	deleteTodo(id: any) {

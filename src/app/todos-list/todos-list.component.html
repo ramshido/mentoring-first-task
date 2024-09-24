@@ -1,7 +1,7 @@
 <<h1>Компонент списка todos</h1>
 
 	<div class="wrapper">
-		<div class="todos-cards" *ngFor="let todo of todosService.todosSubject | async">
+		<div class="todos-cards" *ngFor="let todo of todosService.todosObservable$ | async">
 			<app-todos-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todos-card>
 		</div>
 	</div>

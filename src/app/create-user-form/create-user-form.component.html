@@ -1,0 +1,22 @@
+
+<div class="form-wrapper">
+	<form id="form" [formGroup]="form" (ngSubmit)="submitForm()">
+		<p>Name:</p>
+		<input type="text" formControlName="name">
+		<div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="alert-error">Имя введено неправильно</div>
+	
+		<p>Email:</p>
+		<input type="text" formControlName="email">
+		<div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="alert-error">Email введен неправильно</div>
+	
+		<p>Website:</p>
+		<input type="text" formControlName="website">
+		<div *ngIf="form.controls['website'].invalid && (form.controls['website'].dirty || form.controls['website'].touched)" class="alert-error">Website введено неправильно</div>
+	
+		<p>Company name:</p>
+		<input type="text" formControlName="companyName">
+		<div *ngIf="form.controls['companyName'].invalid && (form.controls['companyName'].dirty || form.controls['companyName'].touched)" class="alert-error">Company name введено неправильно</div>
+		
+		<button class="form-btn" [disabled]="form.invalid">Create User</button>
+	</form>
+</div>

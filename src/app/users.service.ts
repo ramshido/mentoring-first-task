@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
-import { IUser } from "./users-list/users-list.component";
 import { BehaviorSubject } from "rxjs";
+import { IUser } from "./Interfaces/IUserInterface";
 
 @Injectable({ providedIn: 'root' })
 
 export class UsersService {
-	  private readonly usersSubject$ = new BehaviorSubject<IUser[]>([]);
-	  public readonly usersObservable$ = this.usersSubject$.asObservable();
+	private readonly usersSubject$ = new BehaviorSubject<IUser[]>([]);
+	public readonly usersObservable$ = this.usersSubject$.asObservable();
 	// users: IUser[] = [];
 
 	getUser(users: IUser[]) {
 		// this.users = users;
-		this.usersSubject$.next(users)
+		this.usersSubject$.next(users);
 	}
 
 	editUser(editedUser: IUser) {
@@ -25,12 +25,16 @@ export class UsersService {
 		);
 	}
 
-	addUser(user: IUser) {
+	createUser(user: IUser) {
 		// this.users = [...this.users, user];
 		// или можем использовать concat - this.users = this.users.concat([user])
-
-		this.usersSubject$.next([...this.usersSubject$.value, user]);
+		const userExisting = this.usersSubject$.value.find(
+			currentElement => currentElement.email === user.email
+		);
+		if (userExisting === undefined) this.usersSubject$.next([...this.usersSubject$.value, user]);
+		else alert('Такой Email уже есть');
 	}
+
 	deleteUser(userId: number) {
 		// this.users = this.users.filter((item) => item.id !== userId);
 

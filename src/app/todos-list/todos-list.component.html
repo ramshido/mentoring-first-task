@@ -1,5 +1,7 @@
 <<h1>Компонент списка todos</h1>
 
+	<app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
+
 	<div class="wrapper">
 		<div class="todos-cards" *ngFor="let todo of todosService.todosObservable$ | async">
 			<app-todos-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todos-card>

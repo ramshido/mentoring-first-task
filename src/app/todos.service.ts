@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { ITodo } from "./todos-list/todos-list.component";
+import { ITodo } from "./Interfaces/ITodoInterface";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
 export class TodosService {
 	private readonly todosSubject$ = new BehaviorSubject<ITodo[]>([]);
@@ -12,8 +12,16 @@ export class TodosService {
 		this.todosSubject$.next(todos)
 	}
 
-	addTodo(todo: ITodo) {
-		this.todosSubject$.next([...this.todosSubject$.value, todo])
+	createTodo(todo: ITodo) {
+		const todoExisting = this.todosSubject$.value.find(
+			currentElement => currentElement.title === todo.title
+		)
+
+		if (todoExisting === undefined) {
+			console.log('Done');
+			this.todosSubject$.next([...this.todosSubject$.value, todo])
+		} else alert('Такой todo уже есть')
+
 	}
 
 	editTodo(todo: ITodo) {

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { ITodo } from "./Interfaces/ITodoInterface";
+import { ITodo } from "../interfaces/todo.interface";
 
 @Injectable({ providedIn: 'root' })
 
@@ -18,8 +18,9 @@ export class TodosService {
 		)
 
 		if (todoExisting === undefined) {
-			console.log('Done');
 			this.todosSubject$.next([...this.todosSubject$.value, todo])
+			console.log(todo.completed);
+			
 		} else alert('Такой todo уже есть')
 
 	}

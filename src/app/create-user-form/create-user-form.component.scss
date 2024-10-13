@@ -4,11 +4,11 @@
 	justify-content: center;
 	margin-top: 100px;
 
-	input {
+	.example-full-width {
 		display: block;
-		border: 1px solid black;
 		margin-top: 15px;
 		margin-bottom: 15px;
+		width: 350px;
 	}
 
 	.alert-error {
@@ -17,10 +17,74 @@
 	}
 
 	.form-btn {
-		height: 30px;
-		padding: 0 5px;
-		font-size: 14px;
-		background-color: #f0ba4e;
-		border-radius: 5px;
+		// background-image: linear-gradient(144deg, #ffb326, #ff8f26 50%, #ff6b26);
+		background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+		border: 0;
+		border-radius: 8px;
+		box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+		color: #FFFFFF;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		max-width: 100%;
+		min-width: 140px;
+		padding: 3px;
+		text-decoration: none;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		white-space: nowrap;
+		cursor: pointer;
+
+		&:active,
+		&:hover {
+			outline: 0;
+		}
+
+		& span {
+			background-color: rgb(5, 6, 45);
+			padding: 16px 24px;
+			border-radius: 6px;
+			width: 100%;
+			height: 100%;
+			transition: 300ms;
+		}
+
+		&:hover span {
+			background: none;
+		}
+
+		&:disabled {
+			background-color: #cccccc;
+			color: #666666;
+			cursor: not-allowed;
+
+			&:hover span{
+				background-color: inherit;
+			}
+		}
+
 	}
 }
+// для нижней линии поля инпут из angular material до взаимодействия
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+	border-bottom-color: rgb(34, 226, 44); 
+}
+// для нижней линии поля инпут из angular material после нажатия
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+	border-bottom-color: rgb(241, 189, 15);
+}
+// кнопки с атрибутом mat-button из angular material
+// button {
+// 	&:not(:disabled) {
+// 		background-color: #0a56e4;
+// 		color: white;
+// 		border-radius: 15px;
+// 	}
+
+// 	&:disabled {
+// 		border-radius: 15px;
+// 	}
+
+// }

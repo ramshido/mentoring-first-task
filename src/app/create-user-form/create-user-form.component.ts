@@ -1,11 +1,18 @@
 import { NgIf } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { MyErrorStateMatcher } from "../utils/error-state-matcher";
+
 
 @Component({
 	selector: 'app-create-user-form',
 	standalone: true,
-	imports: [ReactiveFormsModule, NgIf],
+	imports: [ReactiveFormsModule, NgIf, MatInputModule, MatFormFieldModule, FormsModule, MatIconModule, MatDividerModule, MatButtonModule,],
 	templateUrl: './create-user-form.component.html',
 	styleUrl: './create-user-form.component.scss',
 })
@@ -19,6 +26,8 @@ export class CreateUserForm {
 		website: new FormControl('', [Validators.required, Validators.minLength(3)]), // null и пустая строка '' одно и тоже
 		companyName: new FormControl('', [Validators.required, Validators.minLength(2)]),
 	})
+
+	matcher = new MyErrorStateMatcher(); // Angular material
 
 	public submitForm(): void {
 		// показ всего

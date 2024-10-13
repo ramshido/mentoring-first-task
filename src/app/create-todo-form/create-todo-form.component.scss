@@ -4,11 +4,19 @@
 	justify-content: center;
 	margin-top: 100px;
 
-	input {
+	.example-full-width {
+		display: block;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		width: 350px;
+	}
+
+	.form-input {
 		display: block;
 		border: 1px solid black;
 		margin-top: 15px;
 		margin-bottom: 15px;
+		width: 100%;
 	}
 
 	.alert-error {

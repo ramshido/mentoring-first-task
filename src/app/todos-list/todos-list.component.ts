@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { TodosApiService } from '../todos-api.service';
+import { TodosApiService } from '../services/todos-api.service';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { TodosCardComponent } from './todos-card/todos-card.component';
-import { TodosService } from '../todos.service';
+import { TodosService } from '../services/todos.service';
 import { CreateTodoFormComponent } from '../create-todo-form/create-todo-form.component';
-import { ICreateTodo, ITodo } from '../Interfaces/ITodoInterface';
+import { ICreateTodo } from '../interfaces/todo.interface';
 
 
 
@@ -35,6 +35,7 @@ export class TodosListComponent {
 			userId: todo.userId,
 			id: new Date().getTime(),
 			title: todo.title,
+			completed: todo.completed,
 		})
 	}
 

@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITodo } from '../../Interfaces/ITodoInterface';
+import { ITodo } from '../../interfaces/todo.interface';
 
 @Component({
   selector: 'app-todos-card',

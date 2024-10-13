@@ -1,11 +1,11 @@
 import { AsyncPipe, NgFor } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { UsersApiService } from "../users-api.service";
+import { UsersApiService } from "../services/users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
-import { UsersService } from "../users.service";
+import { UsersService } from "../services/users.service";
 import { ChangeDetectionStrategy } from "@angular/core";
 import { CreateUserForm } from "../create-user-form/create-user-form.component";
-import { ICreateUser} from "../Interfaces/IUserInterface";
+import { ICreateUser} from "../interfaces/user.interface";
 
 @Component({
 	selector: 'app-users-list',

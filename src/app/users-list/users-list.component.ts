@@ -5,7 +5,7 @@ import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../services/users.service";
 import { ChangeDetectionStrategy } from "@angular/core";
 import { CreateUserForm } from "../create-user-form/create-user-form.component";
-import { ICreateUser} from "../interfaces/user.interface";
+import { ICreateUser, IEditUser, IUser} from "../interfaces/user.interface";
 
 @Component({
 	selector: 'app-users-list',
@@ -45,5 +45,23 @@ export class UsersListComponent {
 				name: user.companyName,
 			},
 		});	
+	}
+
+	public editUser(formDialogValue: IEditUser) {
+		this.usersService.editUser({
+			...formDialogValue,
+			company:  {
+				name: formDialogValue.companyName,
+			},
+		});	
+		console.log( ///////////////////////////////////////
+			{
+				...formDialogValue,
+				company: {
+					name: formDialogValue.companyName,
+				},
+			}
+		);
+		
 	}
 }

@@ -79,3 +79,18 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	margin: 0 auto;
 	padding: 0 60px;
 }
+
+.btn-wrapper {
+	display: flex;
+}
+
+.form-dialog-btn {
+	width: 80%;
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+.dialog-form-field {
+	width: 100%;
+}
+

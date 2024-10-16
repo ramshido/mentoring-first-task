@@ -1,18 +1,21 @@
-
 <div class="form-wrapper">
 	<form id="form" [formGroup]="form">
 		<p>ТЕКСТ ЗАДАЧИ:</p>
 		<input type="text" formControlName="title" class="form-input">
-		<div class="alert-error" *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">Ошибка</div>
-	
+		<div class="alert-error"
+			*ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">Ошибка
+		</div>
+
 		<p>АВТОР ЗАДАЧИ:</p>
 		<mat-form-field class="example-full-width">
 			<mat-label>Число</mat-label>
 			<input matInput formControlName="userId">
-			<mat-error *ngIf="form.controls['userId'].hasError('pattern') && !form.controls['userId'].hasError('required') || form.controls['userId'].hasError('maxlength')">Введите макс. 1 число, от 0 до 9</mat-error>
+			<mat-error
+				*ngIf="form.controls['userId'].hasError('pattern') && !form.controls['userId'].hasError('required') || form.controls['userId'].hasError('maxlength')">Введите
+				макс. 1 число, от 0 до 9</mat-error>
 			<mat-error *ngIf="form.controls['userId'].hasError('required')">Поле пустует</mat-error>
 		</mat-form-field>
-		
+
 		<p>ЗАДАЧА ЗАВЕРШЕНА:</p>
 		<mat-form-field class="example-full-width">
 			<mat-label>Да - Нет</mat-label>

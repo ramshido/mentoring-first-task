@@ -4,6 +4,6 @@
 
 	<div class="wrapper">
 		<div class="todos-cards" *ngFor="let todo of todosService.todosObservable$ | async">
-			<app-todos-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todos-card>
+			<app-todos-card [todo]="todo" (deleteTodo)="deleteTodo($event)" (editTodo)="editTodo($event)"></app-todos-card>
 		</div>
 	</div>

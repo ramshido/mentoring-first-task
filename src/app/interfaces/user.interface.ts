@@ -23,12 +23,11 @@ export interface IUser {
 }
 
 export interface ICreateUser {
+	id: number,
 	name: string
 	email: string
 	website: string
-	companyName: string
-}
-
-export interface IEditUser extends ICreateUser {
-	id: number
+	company: {
+		name: string
+	};
 }

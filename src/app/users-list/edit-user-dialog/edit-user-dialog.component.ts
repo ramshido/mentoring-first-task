@@ -29,17 +29,19 @@ export class EditUserDialogComponent {
 	readonly data = inject<{ user: IUser }>(MAT_DIALOG_DATA);
 
 	public readonly form = new FormGroup({
+		id: new FormControl(this.data.user.id),
 		name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(2)]),
 		email: new FormControl(this.data.user.email, [Validators.required, Validators.email]),
 		website: new FormControl(this.data.user.website, [Validators.required, Validators.minLength(3)]), // null и пустая строка '' одно и тоже
-		companyName: new FormControl(this.data.user.company.name, [Validators.required, Validators.minLength(2)]),
+		company: new FormGroup({
+			name: new FormControl(this.data.user.company.name, [Validators.required, Validators.minLength(2)]),
+		}),
 	});
 
 	matcher = new MyErrorStateMatcher();
 
-	get userWithUpdatedFields() {
+	get userWithUpdatedFields() {	
 		return {
-			id: this.data.user.id,
 			...this.form.value,
 		}
 	}

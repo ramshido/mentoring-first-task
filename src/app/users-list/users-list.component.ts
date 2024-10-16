@@ -5,7 +5,7 @@ import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../services/users.service";
 import { ChangeDetectionStrategy } from "@angular/core";
 import { CreateUserForm } from "../create-user-form/create-user-form.component";
-import { ICreateUser, IEditUser, IUser} from "../interfaces/user.interface";
+import { ICreateUser, IUser } from "../interfaces/user.interface";
 
 @Component({
 	selector: 'app-users-list',
@@ -37,31 +37,14 @@ export class UsersListComponent {
 
 	public createUser(user: ICreateUser) {
 		this.usersService.createUser({
-			id: new Date().getTime(),
-			name: user.name,
-			email: user.email,
-			website: user.website,
-			company:  {
-				name: user.companyName,
-			},
-		});	
+			...user
+		});
 	}
 
-	public editUser(formDialogValue: IEditUser) {
+	public editUser(formDialogValue: IUser) {
 		this.usersService.editUser({
 			...formDialogValue,
-			company:  {
-				name: formDialogValue.companyName,
-			},
-		});	
-		console.log( ///////////////////////////////////////
-			{
-				...formDialogValue,
-				company: {
-					name: formDialogValue.companyName,
-				},
-			}
-		);
-		
+		});
+		console.log('Обновленные данные пользователя', formDialogValue);
 	}
 }

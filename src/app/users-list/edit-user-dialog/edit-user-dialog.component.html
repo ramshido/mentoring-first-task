@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>It is editing: {{data.user.name}}</h2>
-<mat-dialog-content class="dialog-content">
+<mat-dialog-content>
 	<form id="form" [formGroup]="form">
 		<p>Name:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
@@ -32,9 +32,9 @@
 		</mat-form-field>
 	
 		<p>Company name:</p>
-		<mat-form-field class="example-full-width dialog-form-field">
+		<mat-form-field class="example-full-width dialog-form-field" formGroupName="company">
 			<mat-label>Название компании</mat-label>
-			<input matInput type="text" formControlName="companyName">
+			<input matInput type="text" formControlName="name">
 		</mat-form-field>
 	</form>
 </mat-dialog-content>

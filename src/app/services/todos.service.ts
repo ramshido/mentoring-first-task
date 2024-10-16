@@ -19,8 +19,6 @@ export class TodosService {
 
 		if (todoExisting === undefined) {
 			this.todosSubject$.next([...this.todosSubject$.value, todo])
-			console.log(todo.completed);
-			
 		} else alert('Такой todo уже есть')
 
 	}

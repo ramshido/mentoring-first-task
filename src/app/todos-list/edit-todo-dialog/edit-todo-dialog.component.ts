@@ -30,10 +30,10 @@ export class EditTodoDialogComponent {
 
 	public form = new FormGroup({
 		id:  new FormControl(this.data.todo.id),
-		title: new FormControl('', [Validators.required, Validators.minLength(3)]),
-		userId: new FormControl('', [Validators.required, Validators.maxLength(1), Validators.pattern('^[0-9]*$')]),
-		completed: new FormControl('', [Validators.required, completedValidator()]),
-	})
+		title: new FormControl(this.data.todo.title, [Validators.required, Validators.minLength(3)]),
+		userId: new FormControl(this.data.todo.userId, [Validators.required, Validators.maxLength(1), Validators.pattern('^[0-9]*$')]),
+		completed: new FormControl((this.data.todo.completed === false) ? 'Нет' : 'Да', [Validators.required, completedValidator()]),
+	});
 
 	get todoWithUpdatedFields() {
 		return {

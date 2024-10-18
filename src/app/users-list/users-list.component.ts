@@ -51,7 +51,11 @@ export class UsersListComponent {
 	}
 
 	public openDialog(): void {
-		const dialogRef = this.dialog.open(CreateUserDialogComponent);
+		const dialogRef = this.dialog.open(CreateUserDialogComponent, {
+			width: '600px',
+			height: 'normal',
+		});
+		
 		const dialogComponentInstance = dialogRef.componentInstance; // .componentInstance — это свойство объекта MatDialogRef, которое предоставляет доступ к экземпляру компонента, используемого в диалоговом окне.
 
 		dialogComponentInstance.dataSubject.subscribe(data => {

@@ -1,6 +1,6 @@
 <mat-dialog-content>
 	<form id="form" [formGroup]="form">
-		<p>Name:</p>
+		<p class="dialog-label">Name:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Имя</mat-label>
 			<input matInput type="text" formControlName="name" [errorStateMatcher]="matcher">
@@ -10,7 +10,7 @@
 			<mat-error *ngIf="form.controls['name'].hasError('required')">Поле <strong>не заполнено</strong></mat-error>
 		</mat-form-field>
 
-		<p>Email:</p>
+		<p class="dialog-label">Email:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Email</mat-label>
 			<input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
@@ -20,7 +20,7 @@
 			<mat-error *ngIf="form.controls['email'].hasError('required')">Email <strong>не написан</strong></mat-error>
 		</mat-form-field>
 
-		<p>Website:</p>
+		<p class="dialog-label">Website:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Сайт</mat-label>
 			<input matInput type="text" formControlName="website" placeholder="Microsoft, Tesla, NVidia">
@@ -30,7 +30,7 @@
 			<mat-error *ngIf="form.controls['website'].hasError('required')">Поле <strong>не заполнено</strong></mat-error>
 		</mat-form-field>
 
-		<p>Company name:</p>
+		<p class="dialog-label">Company name:</p>
 		<mat-form-field class="example-full-width dialog-form-field" formGroupName="company">
 			<mat-label>Название компании</mat-label>
 			<input matInput type="text" formControlName="name">

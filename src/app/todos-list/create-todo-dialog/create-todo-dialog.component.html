@@ -1,13 +1,12 @@
-<h2 mat-dialog-title>id of edit todo: {{data.todo.id}}</h2>
 <mat-dialog-content>
 	<form id="form" [formGroup]="form">
-		<p>ТЕКСТ ЗАДАЧИ:</p>
-		<input type="text" formControlName="title" class="form-input dialog-form-field">
+		<p class="dialog-label">ТЕКСТ ЗАДАЧИ:</p>
+		<input type="text" formControlName="title" class="form-input">
 		<div class="alert-error"
 			*ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">Ошибка
 		</div>
 
-		<p>АВТОР ЗАДАЧИ:</p>
+		<p class="dialog-label">АВТОР ЗАДАЧИ:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Число</mat-label>
 			<input matInput formControlName="userId">
@@ -17,7 +16,7 @@
 			<mat-error *ngIf="form.controls['userId'].hasError('required')">Поле пустует</mat-error>
 		</mat-form-field>
 
-		<p>ЗАДАЧА ЗАВЕРШЕНА:</p>
+		<p class="dialog-label">ЗАДАЧА ЗАВЕРШЕНА:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Да - Нет</mat-label>
 			<input matInput formControlName="completed">
@@ -25,8 +24,7 @@
 	</form>
 </mat-dialog-content>
 
-<mat-dialog-actions align="center">
-	<button mat-flat-button class="form-dialog-btn" [disabled]="form.invalid" type="submit" [mat-dialog-close]="todoWithUpdatedFields">
-		Edit User
-	</button>
+<mat-dialog-actions class="dialog-action">
+	<button mat-flat-button class="create-dialog-btn" [mat-dialog-close]="false">No</button>
+	<button mat-flat-button class="create-dialog-btn" [disabled]="form.invalid" (click)="closeDialog()">Create</button>
 </mat-dialog-actions>

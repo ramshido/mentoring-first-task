@@ -7,3 +7,7 @@
 			<app-todos-card [todo]="todo" (deleteTodo)="deleteTodo($event)" (editTodo)="editTodo($event)"></app-todos-card>
 		</div>
 	</div>
+
+	<button mat-fab class="add-dialog" (click)="openDialog()">
+		<mat-icon>add</mat-icon>
+	</button>

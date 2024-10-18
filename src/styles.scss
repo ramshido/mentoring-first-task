@@ -84,6 +84,19 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	display: flex;
 }
 
+.alert-error {
+	color: red;
+	margin: 15px 0;
+}
+
+.form-input {
+	display: block;
+	border: 1px solid black;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
 .form-dialog-btn {
 	width: 80%;
 	margin-top: 15px;
@@ -93,4 +106,5 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .dialog-form-field {
 	width: 100%;
 }
+
 

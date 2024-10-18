@@ -2,13 +2,13 @@
 <mat-dialog-content>
 	<form id="form" [formGroup]="form">
 		<p>ТЕКСТ ЗАДАЧИ:</p>
-		<input type="text" formControlName="title" class="form-input">
+		<input type="text" formControlName="title" class="form-input dialog-form-field">
 		<div class="alert-error"
 			*ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">Ошибка
 		</div>
 
 		<p>АВТОР ЗАДАЧИ:</p>
-		<mat-form-field class="example-full-width">
+		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Число</mat-label>
 			<input matInput formControlName="userId">
 			<mat-error
@@ -18,14 +18,14 @@
 		</mat-form-field>
 
 		<p>ЗАДАЧА ЗАВЕРШЕНА:</p>
-		<mat-form-field class="example-full-width">
+		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Да - Нет</mat-label>
 			<input matInput formControlName="completed">
 		</mat-form-field>
 	</form>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions align="center">
 	<button mat-flat-button class="form-dialog-btn" [disabled]="form.invalid" type="submit" [mat-dialog-close]="todoWithUpdatedFields">
 		Edit User
 	</button>

@@ -9,19 +9,19 @@ export class TodosService {
 	public readonly todosObservable$ = this.todosSubject$.asObservable();
 
 	getTodo(todos: ITodo[]) {
-		this.todosSubject$.next(todos)
-	}
+		this.todosSubject$.next(todos);
+	};
 
 	createTodo(todo: ITodo) {
 		const todoExisting = this.todosSubject$.value.find(
 			currentElement => currentElement.title === todo.title
-		)
+		);
 
 		if (todoExisting === undefined) {
-			this.todosSubject$.next([...this.todosSubject$.value, todo])
-		} else alert('Такой todo уже есть')
+			this.todosSubject$.next([...this.todosSubject$.value, todo]);
+		} else alert('Такой todo уже есть');
 
-	}
+	};
 
 	editTodo(todo: ITodo) {
 		this.todosSubject$.next(
@@ -29,11 +29,11 @@ export class TodosService {
 				item => (item.id === todo.id) ? todo : item
 			)
 		)
-	}
+	};
 
 	deleteTodo(todoId: number) {
 		this.todosSubject$.next(
 			this.todosSubject$.value.filter(item => item.id !== todoId)
 		)
-	}
+	};
 }

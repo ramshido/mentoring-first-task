@@ -16,7 +16,7 @@ export class CreateTodoFormComponent {
 	// private readonly fb = inject(FormBuilder); // formBuilder
 
 	@Output()
-	createTodo = new EventEmitter()
+	createTodo = new EventEmitter() // если буду типизировать EventEmitter дженериком интерфейса ITodo, в компоненте create-user-form есть инструкция
 
 	public form = new FormGroup({
 		id: new FormControl(new Date().getTime()),

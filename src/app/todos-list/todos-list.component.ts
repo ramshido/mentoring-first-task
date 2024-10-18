@@ -21,9 +21,10 @@ export class TodosListComponent {
 	readonly todosService = inject(TodosService);
 
 	constructor() {
-		this.todosApiService.getTodos().subscribe((
-			response: any) => this.todosService.getTodo(response)
-		);
+		this.todosApiService.getTodos().subscribe(
+			(response: ITodo[]) => {
+				return this.todosService.getTodo(response.slice(1, 11));
+			});
 	};
 
 	public deleteTodo(id: number) {

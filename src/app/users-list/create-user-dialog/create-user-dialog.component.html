@@ -1,0 +1,45 @@
+<mat-dialog-content>
+	<form id="form" [formGroup]="form">
+		<p>Name:</p>
+		<mat-form-field class="example-full-width dialog-form-field">
+			<mat-label>Имя</mat-label>
+			<input matInput type="text" formControlName="name" [errorStateMatcher]="matcher">
+			<mat-error
+				*ngIf="form.controls['name'].hasError('minlength') && !form.controls['name'].hasError('required')">Слишком
+				короткое</mat-error>
+			<mat-error *ngIf="form.controls['name'].hasError('required')">Поле <strong>не заполнено</strong></mat-error>
+		</mat-form-field>
+
+		<p>Email:</p>
+		<mat-form-field class="example-full-width dialog-form-field">
+			<mat-label>Email</mat-label>
+			<input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+				placeholder="Ex. pat@example.com">
+			<mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">Please
+				enter a valid email address</mat-error>
+			<mat-error *ngIf="form.controls['email'].hasError('required')">Email <strong>не написан</strong></mat-error>
+		</mat-form-field>
+
+		<p>Website:</p>
+		<mat-form-field class="example-full-width dialog-form-field">
+			<mat-label>Сайт</mat-label>
+			<input matInput type="text" formControlName="website" placeholder="Microsoft, Tesla, NVidia">
+			<mat-error
+				*ngIf="form.controls['website'].hasError('minlength') && !form.controls['website'].hasError('required')">Слишком
+				короткое</mat-error>
+			<mat-error *ngIf="form.controls['website'].hasError('required')">Поле <strong>не заполнено</strong></mat-error>
+		</mat-form-field>
+
+		<p>Company name:</p>
+		<mat-form-field class="example-full-width dialog-form-field" formGroupName="company">
+			<mat-label>Название компании</mat-label>
+			<input matInput type="text" formControlName="name">
+			<mat-icon matSuffix>open_in_new</mat-icon>
+		</mat-form-field>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-action">
+	<button mat-flat-button class="create-dialog-btn" [mat-dialog-close]="false">No</button>
+	<button mat-flat-button class="create-dialog-btn" [disabled]="form.invalid" (click)="closeDialog()">Create</button>
+</mat-dialog-actions>

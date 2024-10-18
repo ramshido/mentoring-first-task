@@ -15,10 +15,10 @@ export class UserCardComponent {
 	public user!: IUser
 
 	@Output()
-	public deleteUser = new EventEmitter()
+	public deleteUser = new EventEmitter<number>()
 
 	@Output()
-	public editUser = new EventEmitter()
+	public editUser = new EventEmitter<IUser>()
 
 	public onDeleteUser(userId: number) {
 		this.deleteUser.emit(userId)

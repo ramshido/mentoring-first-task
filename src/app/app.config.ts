@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
 
 
 export const appConfig: ApplicationConfig = {
@@ -12,11 +13,15 @@ export const appConfig: ApplicationConfig = {
 		provideRouter(routes),
 		provideHttpClient(),
 		provideAnimationsAsync(),
-		{
-			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+		{ // делаем обоертку hint у инпутов mat-form-field по дефолту скрытыми, во время инвалидности формы показать
+			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
 			useValue: {
-				subscriptSizing: 'dynamic'
-			}
+				subscriptSizing: 'dynamic',
+			},
 		},
+		{ // делаем автофокус у кнопок или инпутов в диалоговом окне angular material по дефолту отключенными 
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { autoFocus: false } as MatDialogConfig
+    }
 	]
 };

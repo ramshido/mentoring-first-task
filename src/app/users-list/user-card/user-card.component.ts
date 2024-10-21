@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 
 @Component({
 	selector: 'app-user-card',
@@ -21,7 +22,14 @@ export class UserCardComponent {
 	public editUser = new EventEmitter<IUser>()
 
 	public onDeleteUser(userId: number) {
-		this.deleteUser.emit(userId)
+		this.dialog.open(DeleteUserDialogComponent)
+			.afterClosed()
+			.subscribe(editResult => {
+				if (editResult) {
+					console.log('карточка удалилась');
+					this.deleteUser.emit(userId);
+				};
+			});
 	}
 
 	readonly dialog = inject(MatDialog);

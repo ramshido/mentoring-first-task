@@ -9,8 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateTodoDialogComponent } from './create-todo-dialog/create-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-todos-list',
@@ -21,8 +20,10 @@ import { MatDialog } from '@angular/material/dialog';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosListComponent {
-	readonly todosApiService = inject(TodosApiService);
-	readonly todosService = inject(TodosService);
+	private readonly todosApiService = inject(TodosApiService);
+	public readonly todosService = inject(TodosService);
+	private readonly dialog = inject(MatDialog);
+	private readonly _snackBar = inject(MatSnackBar);
 
 	constructor() {
 		this.todosApiService.getTodos().subscribe(
@@ -33,17 +34,18 @@ export class TodosListComponent {
 
 	public deleteTodo(id: number) {
 		this.todosService.deleteTodo(id);
+		this._snackBar.open('Todo deleted', 'Ok');
 	};
 
 	public createTodo(todo: ITodo) {
 		this.todosService.createTodo(todo);
+		this._snackBar.open('Todo created', 'Ok');
 	};
 
 	public editTodo(todo: ITodo) {
 		this.todosService.editTodo(todo);
+		this._snackBar.open('Todo edited', 'Ok');
 	}
-
-	readonly dialog = inject(MatDialog);
 
 	public openDialog(): void {
 		const dialogRef = this.dialog.open(CreateTodoDialogComponent, {

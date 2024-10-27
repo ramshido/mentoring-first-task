@@ -1,8 +1,20 @@
 <h2 mat-dialog-title>Подтвердите удаление!</h2>
-<mat-dialog-content class="delete-dialog-content">
-  Вы действительно ходите <span>удалить</span> пользователя?
+<mat-dialog-content class="confirm-action-dialog">
+	Вы действительно ходите <span class="confirm-action-dialog__accent">удалить</span> пользователя?
 </mat-dialog-content>
-<mat-dialog-actions class="delete-dialog-btn-wrapper">
-  <button class="delete-dialog-btn" mat-button mat-dialog-close [mat-dialog-close]>No</button>
-  <button class="delete-dialog-btn" mat-button mat-dialog-close [mat-dialog-close]="true">Ok</button>
+<mat-dialog-actions class="confirm-action-buttons">
+	<button class="confirm-action-buttons__btn" mat-button mat-dialog-close>No</button>
+	<button class="confirm-action-buttons__btn" mat-button [mat-dialog-close]="true">Ok</button>
 </mat-dialog-actions>
+<!-- 
+	mat-dialog-close - без квадратных скобок используем, используется как обычный атрибут без привязки данных.
+	В этом случае кнопка будет просто закрывать диалоговое окно без передачи каких-либо данных обратно, то есть действие по умолчанию.
+
+	[mat-dialog-close]="true" - делает директиву привязанной к данным. Значение, указанное внутри квадратных скобок, передаётся как результат диалога.
+	Это полезно, если нужно передать данные, которые будут использоваться после закрытия диалога.
+
+	когда просто хочешь закрыть окно, пользуйся без квадратных скобок
+	
+	когда хочешь передать данные в MAT_DIALOG_DATA через закрытие диалога, пользуйся
+	квадратными скобками
+	-->

@@ -164,3 +164,19 @@ h6 {
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
 	background-color: transparent;
 }
+
+.confirm-action-dialog {
+	&__accent {
+		text-transform: uppercase;
+		color: #f0ba4e;
+	}
+}
+
+.confirm-action-buttons {
+	justify-content: space-around !important;
+	&__btn {
+		width: 200px;
+		background-color: #f0ba4e !important;
+		margin-bottom: 10px;
+	}
+}

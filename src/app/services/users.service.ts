@@ -47,7 +47,6 @@ export class UsersService {
 			this.usersSubject$.value.filter(item => item.id !== userId)
 		);
 		this._snackBar.open('Пользователь удален', 'Ок').afterDismissed().subscribe(() => {
-			console.log('The snackbar was dismissed');
 		});
 	}
 }

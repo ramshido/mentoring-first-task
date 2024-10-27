@@ -3,6 +3,7 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { ITodo } from '../../interfaces/todo.interface';
 import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteTodoDialogComponent } from '../delete-todo-dialog/delete-todo-dialog.component';
 
 @Component({
 	selector: 'app-todos-card',
@@ -12,34 +13,39 @@ import { MatDialog } from '@angular/material/dialog';
 	styleUrl: './todos-card.component.scss'
 })
 export class TodosCardComponent {
-	@Input()
-	public todo!: ITodo
+	private readonly dialog = inject(MatDialog);
+
+	@Input({ required: true })
+	public todo!: ITodo;
 
 	@Output()
 	public deleteTodo = new EventEmitter<number>();
 
 	@Output()
-	public editTodo = new EventEmitter()
+	public editTodo = new EventEmitter();
 
 	public onDeleteTodo(todoId: number) {
-		this.deleteTodo.emit(todoId)
-	}
-
-	readonly dialog = inject(MatDialog);
+		const deleteDialogRef = this.dialog.open(DeleteTodoDialogComponent)
+			.afterClosed()
+			.subscribe((todoDeleteResult: boolean) => {
+				if (todoDeleteResult) {
+					this.deleteTodo.emit(todoId);
+				}
+			});
+	};
 
 	public openDialog(): void {
-		const dialogRef = this.dialog.open(EditTodoDialogComponent, {
+		const createDialogRef = this.dialog.open(EditTodoDialogComponent, {
 			width: '600px',
 			data: { todo: this.todo },
 		})
 			.afterClosed()
 			.subscribe(
 				(todoEditResult) => {
-					console.log('The dialog was closed');
 					if (todoEditResult !== undefined) {
 						this.editTodo.emit(todoEditResult);
 					};
 				});
-	}
+	};
 
 }

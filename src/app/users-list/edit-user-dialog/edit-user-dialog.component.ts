@@ -26,6 +26,7 @@ import { IUser } from "../../interfaces/user.interface";
 	styleUrl: './edit-user-dialog.component.scss',
 })
 export class EditUserDialogComponent {
+	matcher = new MyErrorStateMatcher();
 	readonly data = inject<{ user: IUser }>(MAT_DIALOG_DATA);
 
 	public readonly form = new FormGroup({
@@ -37,9 +38,7 @@ export class EditUserDialogComponent {
 			name: new FormControl(this.data.user.company.name, [Validators.required, Validators.minLength(2)]),
 		}),
 	});
-
-	matcher = new MyErrorStateMatcher();
-
+	
 	get userWithUpdatedFields() {	
 		return {
 			...this.form.value,

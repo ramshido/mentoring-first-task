@@ -16,7 +16,7 @@ export class TodosCardComponent {
 	public todo!: ITodo
 
 	@Output()
-	public deleteTodo = new EventEmitter()
+	public deleteTodo = new EventEmitter<number>();
 
 	@Output()
 	public editTodo = new EventEmitter()

@@ -25,7 +25,7 @@ export class UsersListComponent {
 	private readonly usersApiService = inject(UsersApiService);
 	public readonly usersService = inject(UsersService);
 
-	readonly dialog = inject(MatDialog);
+	private readonly dialog = inject(MatDialog);
 
 	constructor() {
 		this.usersApiService.getUsers().subscribe((response: IUser[]) => {
@@ -53,7 +53,6 @@ export class UsersListComponent {
 	public openDialog(): void {
 		const dialogRef = this.dialog.open(CreateUserDialogComponent, {
 			width: '600px',
-			height: 'normal',
 		});
 		
 		const dialogComponentInstance = dialogRef.componentInstance; // .componentInstance — это свойство объекта MatDialogRef, которое предоставляет доступ к экземпляру компонента, используемого в диалоговом окне.

@@ -10,7 +10,7 @@
 				короткое</mat-error>
 			<mat-error *ngIf="form.controls['name'].hasError('required')">Поле <strong>не заполнено</strong></mat-error>
 		</mat-form-field>
-	
+
 		<p class="dialog-label">Email:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Email</mat-label>
@@ -20,7 +20,7 @@
 				enter a valid email address</mat-error>
 			<mat-error *ngIf="form.controls['email'].hasError('required')">Email <strong>не написан</strong></mat-error>
 		</mat-form-field>
-	
+
 		<p class="dialog-label">Website:</p>
 		<mat-form-field class="example-full-width dialog-form-field">
 			<mat-label>Сайт</mat-label>
@@ -30,7 +30,7 @@
 				короткое</mat-error>
 			<mat-error *ngIf="form.controls['website'].hasError('required')">Поле <strong>не заполнено</strong></mat-error>
 		</mat-form-field>
-	
+
 		<p class="dialog-label">Company name:</p>
 		<mat-form-field class="example-full-width dialog-form-field" formGroupName="company">
 			<mat-label>Название компании</mat-label>
@@ -40,7 +40,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions class="dialog-actions" align="center">
-	<button mat-flat-button class="form-dialog-btn" [disabled]="form.invalid" [mat-dialog-close]="userWithUpdatedFields">
+	<button mat-flat-button class="form-dialog-btn" [disabled]="form.invalid" [mat-dialog-close]="userWithUpdatedFields"
+		matTooltip="Редактировать данные пользователя">
 		<span class="text">edit user</span>
 	</button>
 </mat-dialog-actions>

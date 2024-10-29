@@ -23,7 +23,7 @@
 				<div class="header-right-heart">
 					<img src="/assets/heart 1.svg" alt="heart">
 				</div>
-				<div class="header-right-store">
+				<div class="header-right-store" backgroundColor="#f0ba4e">
 					<img src="/assets/Mask group.svg" alt="store">
 					<span>Пусто</span>
 				</div>
@@ -47,6 +47,9 @@
 					<input type="text" placeholder="Поиск, например Круг зачистной">
 				</div>
 				<div class="navigation__right-location">Москва</div>
+				<div class="navigation__right-today-date">
+					{{today | date:'medium'}}
+				</div>
 			</div>
 		</nav>
 	</div>

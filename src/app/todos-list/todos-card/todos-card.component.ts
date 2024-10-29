@@ -4,11 +4,12 @@ import { ITodo } from '../../interfaces/todo.interface';
 import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteTodoDialogComponent } from '../delete-todo-dialog/delete-todo-dialog.component';
+import { CharacterLimiterPipe } from '../../pipes/character-limiter.pipe';
 
 @Component({
 	selector: 'app-todos-card',
 	standalone: true,
-	imports: [NgFor],
+	imports: [NgFor, CharacterLimiterPipe],
 	templateUrl: './todos-card.component.html',
 	styleUrl: './todos-card.component.scss'
 })

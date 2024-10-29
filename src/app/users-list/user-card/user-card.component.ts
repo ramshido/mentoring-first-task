@@ -3,12 +3,15 @@ import { IUser } from '../../interfaces/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
-import { UpperCasePipe } from '@angular/common';
+import { CustomUpperCasePipe } from '../../pipes/upper-case.pipe';
+import { DashesDeletePipe } from '../../pipes/dashes-delete.pipe';
+import { RedDirective } from '../../directives/red.directive';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'app-user-card',
 	standalone: true,
-	imports: [UpperCasePipe],
+	imports: [CustomUpperCasePipe, DashesDeletePipe, RedDirective, MatTooltipModule],
 	templateUrl: './user-card.component.html',
 	styleUrl: './user-card.component.scss'
 })

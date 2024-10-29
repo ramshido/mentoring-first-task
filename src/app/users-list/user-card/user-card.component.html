@@ -1,8 +1,9 @@
-<p>{{user.name | uppercase}}</p>
-<p>{{user.email}}</p>
-<p>{{user.website}}</p>
-<p>{{user.company.name}}</p>
+<p red>{{user.name | customUpperCase}}</p>
+<p>{{user.email | customUpperCase}}</p>
+<p>{{user.website | customUpperCase}}</p>
+<p>{{user.company.name | customUpperCase}}</p>
+<p>{{user.phone | dashesDelete}}</p>
 <div class="btn-wrapper">
 	<button class="cards-btn" (click)=onDeleteUser(user.id)>delete</button>
-	<button class="cards-btn" (click)="openDialog()">edit</button>
+	<button class="cards-btn" (click)="openDialog()" matTooltip="Редактировать данные пользователя">edit</button>
 </div>

@@ -10,11 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
+import { ShadowSetDirective } from "../directives/shadows.directive";
 
 @Component({
 	selector: 'app-users-list',
 	standalone: true,
-	imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserForm, MatButtonModule, MatIconModule],
+	imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserForm, MatButtonModule, MatIconModule, ShadowSetDirective],
 	templateUrl: './users-list.component.html',
 	styleUrl: './users-list.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush

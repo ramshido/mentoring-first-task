@@ -7,6 +7,7 @@ import { MyErrorStateMatcher } from "../../utils/error-state-matcher";
 import { NgIf } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import { IUser } from "../../interfaces/user.interface";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'app-edit-user-dialog',
@@ -20,6 +21,7 @@ import { IUser } from "../../interfaces/user.interface";
 		MatFormFieldModule,
 		MatInputModule,
 		MatButtonModule,
+		MatTooltipModule
 	],
 	standalone: true,
 	templateUrl: './edit-user-dialog.component.html',

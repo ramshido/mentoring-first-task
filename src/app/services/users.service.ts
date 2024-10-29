@@ -3,8 +3,9 @@ import { BehaviorSubject } from "rxjs";
 import { IUser } from "../interfaces/user.interface";
 import {MatSnackBar} from '@angular/material/snack-bar';
 
-@Injectable({ providedIn: 'root' })
-
+@Injectable(
+	{ providedIn: 'root' }
+)
 export class UsersService {
 	private readonly usersSubject$ = new BehaviorSubject<IUser[]>([]);
 	public readonly usersObservable$ = this.usersSubject$.asObservable();

@@ -25,7 +25,6 @@ export class UsersListComponent {
 	// "Собственная ответственность"
 	private readonly usersApiService = inject(UsersApiService);
 	public readonly usersService = inject(UsersService);
-
 	private readonly dialog = inject(MatDialog);
 
 	constructor() {

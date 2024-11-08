@@ -1,6 +1,5 @@
 import { AsyncPipe, NgFor } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { UsersApiService } from "../services/users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../services/users.service";
 import { ChangeDetectionStrategy } from "@angular/core";
@@ -11,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
 import { ShadowSetDirective } from "../directives/shadows.directive";
-import { LocalStorageService } from "../services/localStorage.service";
 
 @Component({
 	selector: 'app-users-list',
@@ -22,8 +20,6 @@ import { LocalStorageService } from "../services/localStorage.service";
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent {
-	// readonly api = inject(HttpClient); // после создания сервиса отдельного, здесь запросы уже не нужны (закомментированные), это делает код лаконичным, и реализует принцип:
-	// "Собственная ответственность"
 	public readonly usersService = inject(UsersService);
 	private readonly dialog = inject(MatDialog);
 	public readonly users$ = this.usersService.usersObservable$;

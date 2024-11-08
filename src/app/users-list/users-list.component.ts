@@ -24,21 +24,12 @@ import { LocalStorageService } from "../services/localStorage.service";
 export class UsersListComponent {
 	// readonly api = inject(HttpClient); // после создания сервиса отдельного, здесь запросы уже не нужны (закомментированные), это делает код лаконичным, и реализует принцип:
 	// "Собственная ответственность"
-	private readonly usersApiService = inject(UsersApiService);
 	public readonly usersService = inject(UsersService);
 	private readonly dialog = inject(MatDialog);
-	private readonly localStorage = inject(LocalStorageService);
+	public readonly users$ = this.usersService.usersObservable$;
 
 	constructor() {
-		// this.usersApiService.getUsers().subscribe((response: IUser[]) => {
-		// 	this.usersService.getUser(response);
-		// });
-
-		// this.usersService.usersSubject.subscribe(
-		// 	items => this.users = items
-		// );
-
-		this.localStorage.getUsersData();
+		this.usersService.loadUsers();
 	}
 
 	public deleteUser(id: number) {

@@ -1,7 +1,9 @@
 import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { IUser } from "../interfaces/user.interface";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LocalStorageService } from "./localStorage.service";
+import { UsersApiService } from "./users-api.service";
 
 @Injectable(
 	{ providedIn: 'root' }
@@ -9,45 +11,54 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class UsersService {
 	private readonly usersSubject$ = new BehaviorSubject<IUser[]>([]);
 	public readonly usersObservable$ = this.usersSubject$.asObservable();
-	private _snackBar = inject(MatSnackBar);
-	// users: IUser[] = [];
 
-	getUser(users: IUser[]) {
-		// this.users = users;
-		this.usersSubject$.next(users);
+	private _snackBar = inject(MatSnackBar);
+	private readonly localStorage = inject(LocalStorageService);
+	private readonly usersApiService = inject(UsersApiService);
+
+	loadUsers() {
+		const localStorageUsers = this.localStorage.getUsersFromLocalStorage<IUser[]>('users');
+
+		if (localStorageUsers) {
+			this.usersSubject$.next(localStorageUsers);
+		} else {
+			this.usersApiService.getUsers().subscribe((data: IUser[]) => {
+				this.localStorage.saveUsersToLocalStorage<IUser[]>('users', data);
+				this.usersSubject$.next(data);
+			});
+		}
+
 	}
 
 	editUser(editedUser: IUser) {
-		// this.users = this.users.map(
-		// 	item => (item.id === editedUser.id) ? editedUser : item
-		// );
-		this.usersSubject$.next(
-			this.usersSubject$.value.map(
-				item => (item.id === editedUser.id) ? editedUser : item
-			)
-		);
+		const index = this.usersSubject$.value.findIndex(el => el.id === editedUser.id);
+		this.usersSubject$.value[index] = editedUser;
+
+    this.localStorage.saveUsersToLocalStorage('users', this.usersSubject$.value);
+    this.usersSubject$.next(this.usersSubject$.value);
 		this._snackBar.open('Пользователь отредатирован', 'Ок');
 	}
 
 	createUser(user: IUser) {
-		// this.users = [...this.users, user];
-		// или можем использовать concat - this.users = this.users.concat([user])
 		const userExisting = this.usersSubject$.value.find(
 			currentElement => currentElement.email === user.email
 		);
 		if (userExisting === undefined) {
-			this.usersSubject$.next([...this.usersSubject$.value, user]);
+			const newUser = [...this.usersSubject$.value, user]
+			this.localStorage.saveUsersToLocalStorage('users', newUser);
+			this.usersSubject$.next(newUser);
 			this._snackBar.open('Пользователь создан', 'Ок');
 		} else alert('Такой Email уже есть');
 	}
 
 	deleteUser(userId: number) {
-		// this.users = this.users.filter((item) => item.id !== userId);
+		const findUser = this.usersSubject$.value.find(user => user.id === userId);
+		const deleteUser = this.usersSubject$.value.filter(user => user.id !== userId);
 
-		this.usersSubject$.next(
-			this.usersSubject$.value.filter(item => item.id !== userId)
-		);
-		this._snackBar.open('Пользователь удален', 'Ок').afterDismissed().subscribe(() => {
-		});
+		if (findUser && confirm('Вы точно хотите удалить карточку пользователя ' + findUser.name + '?')) {
+			this.localStorage.saveUsersToLocalStorage('users', deleteUser);
+			this.usersSubject$.next(deleteUser);
+			this._snackBar.open('Пользователь удален', 'Ок').afterDismissed().subscribe(() => { });
+		}
 	}
 }

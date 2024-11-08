@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
 import { ShadowSetDirective } from "../directives/shadows.directive";
+import { LocalStorageService } from "../services/localStorage.service";
 
 @Component({
 	selector: 'app-users-list',
@@ -26,15 +27,18 @@ export class UsersListComponent {
 	private readonly usersApiService = inject(UsersApiService);
 	public readonly usersService = inject(UsersService);
 	private readonly dialog = inject(MatDialog);
+	private readonly localStorage = inject(LocalStorageService);
 
 	constructor() {
-		this.usersApiService.getUsers().subscribe((response: IUser[]) => {
-			this.usersService.getUser(response);
-		});
+		// this.usersApiService.getUsers().subscribe((response: IUser[]) => {
+		// 	this.usersService.getUser(response);
+		// });
 
 		// this.usersService.usersSubject.subscribe(
 		// 	items => this.users = items
 		// );
+
+		this.localStorage.getUsersData();
 	}
 
 	public deleteUser(id: number) {

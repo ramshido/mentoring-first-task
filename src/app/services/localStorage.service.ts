@@ -16,32 +16,68 @@ export class LocalStorageService {
 	private readonly usersService = inject(UsersService);
 	private readonly todosService = inject(TodosService);
 
-	private readonly localStorageSubject$ = new BehaviorSubject([]);
-	public readonly localStorageObservable$ = this.localStorageSubject$.asObservable();
+	private readonly localStorageUserKey = 'users';
+	private readonly localStorageTodoKey = 'todos';
 
-	public getUsersData() {
+	private readonly userLocalStorageSubject$ = new BehaviorSubject<IUser[]>([]);
+	public readonly userLocalStorageObservable$ = this.userLocalStorageSubject$.asObservable();
+
+	public async getUsersData() {
+		let storageData: any = this.userLocalStorageSubject$.value;
+
+		localStorage.getItem(this.localStorageUserKey); // 
+
+		if (storageData) {
+			this.userLocalStorageSubject$.subscribe((result: any) => {
+				this.usersService.getUser(JSON.parse(result));
+			});
+			return;
+		}
+		
 		this.usersApiService.getUsers().subscribe((response: IUser[]) => {
+			// this.usersService.getUser(response);
+			
+			localStorage.setItem(this.localStorageUserKey, JSON.stringify(response));
 			this.usersService.getUser(response);
 		});
-	}
+	};
 
-	public getTodosData() {
+	public getTodosData() { // а разработке...
 		this.todosApiService.getTodos().subscribe(
 			(response: ITodo[]) => {
 				return this.todosService.getTodo(response.slice(1, 11));
 			});
-	}
+	};
 
-	// public addToStorage (storageName: string, data: any) {
-	// 	let storageArr = [data];
-	// 	const storageData = JSON.parse(localStorage.getItem(storageName));
+	public getStorage(storageName: any) {
+		let dataStorage: any = localStorage.getItem(storageName);
+		return JSON.parse(dataStorage);
+	};
 
-	// 	if (storageData) {
-	// 		if (storageData.map((el: any) => el.id).includes(data.id)) {
-	// 			return;
-	// 		}
-	// 		storageArr = [...storageName, ...storageArr];
-	// 	}
-	// }
+	public addToStorage(storageName: string, data: any) {
+		let storageArr = [data];
+		const storageData = this.getStorage(storageName);
 
+		if (storageData) {
+			storageArr = [...storageData, ...storageArr];
+		}
+		localStorage.setItem(storageName, JSON.stringify(storageArr));
+	};
+
+	public removeFromStorage(id: number, storageName: any) {
+		const storageData = this.getStorage(storageName);
+
+		if (!storageData) {
+			return;
+		}
+
+		storageData.splice(storageData.map((el: any) => el.id).indexOf(id), 1);
+
+		if (!storageData.length) {
+			localStorage.removeItem(storageName);
+			return;
+		}
+
+		localStorage.setItem(storageName, JSON.stringify(storageData));
+	};
 }

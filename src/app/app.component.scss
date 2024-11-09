@@ -178,3 +178,26 @@
 		}
 	}
 }
+
+.admin-user-role__wrapper {
+  width: 300px;
+  background-color: #31cca5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  position: fixed;
+  right: 100px;
+  top: 50%;
+}
+
+.admin-user-role__btn {
+  padding: 5px;
+  border-radius: 10px;
+  & + & {
+    margin-top: 5px;
+  }
+  &:hover {
+    background: #f0a747;
+  }
+}

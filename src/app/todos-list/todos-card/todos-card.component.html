@@ -8,4 +8,5 @@
 <p>ЗАДАЧА ЗАВЕРШЕНА:</p>
 <div>{{todo.completed ? 'ДА' : 'НЕТ'}}</div>
 
-<button class="todo-btn" (click)=onDeleteTodo(todo.id)>УДАЛИТЬ ЗАДАЧУ</button>
+<button class="todos-btn" (click)=onDeleteTodo(todo.id)>УДАЛИТЬ ЗАДАЧУ</button>
+<button class="todos-btn" (click)="editTodo.emit(todo)">Edit</button>

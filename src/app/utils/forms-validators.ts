@@ -5,7 +5,7 @@ export function completedValidator(): ValidatorFn {
 		if (control.value === null) {
 			return { invalidCompleted: true };
 		} 
-		let value = control.value.trim().toLowerCase();
+		const value = control.value.trim().toLowerCase();
 		if (value === 'да' || value === 'нет') return null;
 		else return { invalidCompleted: true };
 	}

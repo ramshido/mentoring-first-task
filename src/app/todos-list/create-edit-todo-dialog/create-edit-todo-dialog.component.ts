@@ -68,7 +68,8 @@ export class CreateEditTodoDialogComponent {
 				completed: (this.form.controls['completed'].value?.trim().toLowerCase() === 'да')
 					? true
 					: false
-			});
+			}
+		);
 		this.form.reset();
 	};
 }

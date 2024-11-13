@@ -35,7 +35,8 @@ export const checkAdminGuard: CanActivateFn = (route, state) => {
 		alert('У вас нет админки');
 		return false;
 	} else {
-		router.navigate(['']);
+		router.navigate(['']); // .createUrlTree(['/home']); - метод для создание структуры url без перехода по нему
+		// если написать let url = router.createUrlTree(['/home']); router.navigate(url); переход будет
 		return false;
 	}
 	// 2-ой способ

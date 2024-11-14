@@ -38,6 +38,7 @@ export class EditTodoDialogComponent {
 	get todoWithUpdatedFields() {
 		return {
 			...this.form.value,
+			completed: (this.form.controls['completed'].value === 'Да') ? true : false
 		}
 	}
 }

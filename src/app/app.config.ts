@@ -6,6 +6,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
+import { provideEffects } from '@ngrx/effects';
+import { provideStore } from '@ngrx/store';
 
 
 export const appConfig: ApplicationConfig = {
@@ -22,6 +24,12 @@ export const appConfig: ApplicationConfig = {
 		{ // делаем автофокус у кнопок или инпутов в диалоговом окне angular material по дефолту отключенными 
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: { autoFocus: false } as MatDialogConfig
-    }
+    },
+		provideEffects(
+
+		),
+		provideStore(
+
+		),
 	]
 };

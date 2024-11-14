@@ -16,14 +16,14 @@ export class TodosService {
 	private readonly localStorageTodoKey = 'todos';
 
 	loadTodos() {
-		const loccalStorageTodos = this.localStorage.getUsersFromLocalStorage<ITodo[]>(this.localStorageTodoKey);
+		const loccalStorageTodos = this.localStorage.getDataFromLocalStorage<ITodo[]>(this.localStorageTodoKey);
 
 		if (loccalStorageTodos) {
 			this.todosSubject$.next(loccalStorageTodos);
 		} else {
 			this.todosApiService.getTodos().subscribe(
 				(todoData: ITodo[]) => {
-					this.localStorage.saveUsersToLocalStorage<ITodo[]>(this.localStorageTodoKey, todoData.slice(1, 11));
+					this.localStorage.saveDataToLocalStorage<ITodo[]>(this.localStorageTodoKey, todoData.slice(1, 11));
 					this.todosSubject$.next(todoData.slice(1, 11));
 				});
 		}
@@ -36,7 +36,7 @@ export class TodosService {
 
 		if (todoExisting === undefined) {
 			const newTodo = [...this.todosSubject$.value, todo];
-			this.localStorage.saveUsersToLocalStorage<ITodo[]>(this.localStorageTodoKey, newTodo);
+			this.localStorage.saveDataToLocalStorage<ITodo[]>(this.localStorageTodoKey, newTodo);
 			this.todosSubject$.next(newTodo);
 		} else alert('Такой todo уже есть');
 
@@ -46,7 +46,7 @@ export class TodosService {
 		const index = this.todosSubject$.value.findIndex(el => el.id === todo.id);
 		this.todosSubject$.value[index] = todo;
 
-		this.localStorage.saveUsersToLocalStorage<ITodo[]>(this.localStorageTodoKey, this.todosSubject$.value);
+		this.localStorage.saveDataToLocalStorage<ITodo[]>(this.localStorageTodoKey, this.todosSubject$.value);
 		this.todosSubject$.next(this.todosSubject$.value);
 	};
 
@@ -55,12 +55,12 @@ export class TodosService {
 		const deleteTodo = this.todosSubject$.value.filter(todo => todo.id !== todoId);
 
 		if (findTodo && confirm('Вы действительно хотите удалить этот todo?')) {
-			this.localStorage.saveUsersToLocalStorage<ITodo[]>(this.localStorageTodoKey, deleteTodo);
+			this.localStorage.saveDataToLocalStorage<ITodo[]>(this.localStorageTodoKey, deleteTodo);
 			this.todosSubject$.next(deleteTodo);
 		}
 
 		if (!this.todosSubject$.value.length) {
-			this.localStorage.removeLovalStorage(this.localStorageTodoKey);
+			this.localStorage.removeLocalStorage(this.localStorageTodoKey);
 		}
 	};
 }

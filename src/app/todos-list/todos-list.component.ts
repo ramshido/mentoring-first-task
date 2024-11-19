@@ -20,9 +20,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosListComponent {
-	public readonly todosService = inject(TodosService);
+	private readonly todosService = inject(TodosService);
 	private readonly dialog = inject(MatDialog);
 	private readonly _snackBar = inject(MatSnackBar);
+	public readonly todosObservable$ = this.todosService.todosObservable$;
 
 	constructor() {
 		this.todosService.loadTodos();

@@ -20,9 +20,10 @@ import { ShadowSetDirective } from "../directives/shadows.directive";
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent {
-	public readonly usersService = inject(UsersService);
+	private readonly usersService = inject(UsersService);
 	private readonly dialog = inject(MatDialog);
 	public readonly users$ = this.usersService.usersObservable$;
+	public usersObservable$ = this.usersService.usersObservable$;
 
 	constructor() {
 		this.usersService.loadUsers();

@@ -16,15 +16,21 @@ export class UsersService {
 	private readonly localStorage = inject(LocalStorageService);
 	private readonly usersApiService = inject(UsersApiService);
 
+	private readonly localStorageUsersKey = 'users';
+
+	private setDataToLocalStorageUsersSubject(usersArray: IUser[]): void {
+		this.localStorage.saveDataToLocalStorage<IUser[]>(this.localStorageUsersKey, usersArray);
+		this.usersSubject$.next(usersArray);
+	};
+
 	loadUsers() {
-		const localStorageUsers = this.localStorage.getUsersFromLocalStorage<IUser[]>('users');
+		const localStorageUsers = this.localStorage.getDataFromLocalStorage<IUser[]>(this.localStorageUsersKey);
 
 		if (localStorageUsers) {
 			this.usersSubject$.next(localStorageUsers);
 		} else {
 			this.usersApiService.getUsers().subscribe((data: IUser[]) => {
-				this.localStorage.saveUsersToLocalStorage<IUser[]>('users', data);
-				this.usersSubject$.next(data);
+				this.setDataToLocalStorageUsersSubject(data);
 			});
 		}
 	};
@@ -33,8 +39,7 @@ export class UsersService {
 		const index = this.usersSubject$.value.findIndex(el => el.id === editedUser.id);
 		this.usersSubject$.value[index] = editedUser;
 
-    this.localStorage.saveUsersToLocalStorage<IUser[]>('users', this.usersSubject$.value);
-    this.usersSubject$.next(this.usersSubject$.value);
+		this.setDataToLocalStorageUsersSubject(this.usersSubject$.value);
 		this._snackBar.open('Пользователь отредатирован', 'Ок');
 	};
 
@@ -44,24 +49,22 @@ export class UsersService {
 		);
 		if (userExisting === undefined) {
 			const newUser = [...this.usersSubject$.value, user];
-			this.localStorage.saveUsersToLocalStorage<IUser[]>('users', newUser);
-			this.usersSubject$.next(newUser);
+			this.setDataToLocalStorageUsersSubject(newUser);
 			this._snackBar.open('Пользователь создан', 'Ок');
 		} else alert('Такой Email уже есть');
 	};
 
 	deleteUser(userId: number) {
 		const findUser = this.usersSubject$.value.find(user => user.id === userId);
-		const deleteUser = this.usersSubject$.value.filter(user => user.id !== userId);
+		const newUsersArray = this.usersSubject$.value.filter(user => user.id !== userId);
 
 		if (findUser && confirm('Вы точно хотите удалить карточку пользователя ' + findUser.name + '?')) {
-			this.localStorage.saveUsersToLocalStorage<IUser[]>('users', deleteUser);
-			this.usersSubject$.next(deleteUser);
+			this.setDataToLocalStorageUsersSubject(newUsersArray);
 			this._snackBar.open('Пользователь удален', 'Ок').afterDismissed().subscribe(() => { });
 		}
 
 		if (!this.usersSubject$.value.length) {
-			this.localStorage.removeLovalStorage('users');
+			this.localStorage.removeLocalStorage(this.localStorageUsersKey);
 		}
 	};
 }

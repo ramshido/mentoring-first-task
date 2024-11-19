@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { MainCardsComponent } from './main-cards/main-cards.component';
+import { MainCardsComponent } from './domain/homepage/main-cards/main-cards.component';
 import { AdminPageComponent } from './domain/admin-page/admin-page.component';
 import { checkAdminGuard } from './domain/admin-page/guards/check-admin.guard';
 import { exitGuard } from './domain/admin-page/guards/exit.guard';

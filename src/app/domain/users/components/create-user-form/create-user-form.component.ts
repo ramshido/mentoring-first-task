@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MyErrorStateMatcher } from "../../../../../shared/utils/error-state-matcher";
+import { MyErrorStateMatcher } from "../../../../shared/utils/error-state-matcher";
 
 // Упрощенный условный тип для формы
 // type FormControls<T> = {

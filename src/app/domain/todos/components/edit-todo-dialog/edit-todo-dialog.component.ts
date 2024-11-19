@@ -5,8 +5,8 @@ import { NgIf } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ITodo } from '../../../interfaces/todo.interface';
-import { completedValidator } from '../../../../../shared/utils/forms-validators';
+import { ITodo } from '../../interfaces/todo.interface';
+import { completedValidator } from '../../../../shared/utils/forms-validators';
 
 @Component({
 	selector: 'app-edit-todo-dialog',

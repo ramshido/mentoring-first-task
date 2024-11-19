@@ -1,12 +1,12 @@
 import { AsyncPipe, NgFor } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { UserCardComponent } from "./user-card/user-card.component";
+import { UserCardComponent } from "../user-card/user-card.component";
 import { ChangeDetectionStrategy } from "@angular/core";
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from "@angular/material/dialog";
-import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
-import { CreateUserForm } from "./create-user-form/create-user-form.component";
+import { CreateUserDialogComponent } from "../create-user-dialog/create-user-dialog.component";
+import { CreateUserForm } from "../create-user-form/create-user-form.component";
 import { ShadowSetDirective } from "../../../../shared/directives/shadows.directive";
 import { UsersService } from "../../services/users.service";
 import { ICreateUser, IUser } from "../../interfaces/user.interface";

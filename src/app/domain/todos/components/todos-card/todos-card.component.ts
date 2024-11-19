@@ -3,8 +3,8 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteTodoDialogComponent } from '../delete-todo-dialog/delete-todo-dialog.component';
-import { CharacterLimiterPipe } from '../../../../../shared/pipes/character-limiter.pipe';
-import { ITodo } from '../../../interfaces/todo.interface';
+import { CharacterLimiterPipe } from '../../../../shared/pipes/character-limiter.pipe';
+import { ITodo } from '../../interfaces/todo.interface';
 
 @Component({
 	selector: 'app-todos-card',

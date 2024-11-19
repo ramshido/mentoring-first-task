@@ -6,8 +6,8 @@ import { MatInputModule } from "@angular/material/input";
 import { NgIf } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { MyErrorStateMatcher } from "../../../../../shared/utils/error-state-matcher";
-import { IUser } from "../../../interfaces/user.interface";
+import { MyErrorStateMatcher } from "../../../../shared/utils/error-state-matcher";
+import { IUser } from "../../interfaces/user.interface";
 
 @Component({
 	selector: 'app-edit-user-dialog',

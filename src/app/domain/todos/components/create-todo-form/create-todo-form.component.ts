@@ -3,7 +3,7 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { completedValidator } from '../../../../../shared/utils/forms-validators';
+import { completedValidator } from '../../../../shared/utils/forms-validators';
 
 @Component({
 	selector: 'app-create-todo-form',

@@ -3,10 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { CustomUpperCasePipe } from '../../../../../shared/pipes/upper-case.pipe';
-import { DashesDeletePipe } from '../../../../../shared/pipes/dashes-delete.pipe';
-import { RedDirective } from '../../../../../shared/directives/red.directive';
-import { IUser } from '../../../interfaces/user.interface';
+import { CustomUpperCasePipe } from '../../../../shared/pipes/upper-case.pipe';
+import { DashesDeletePipe } from '../../../../shared/pipes/dashes-delete.pipe';
+import { RedDirective } from '../../../../shared/directives/red.directive';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
 	selector: 'app-user-card',

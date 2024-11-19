@@ -42,7 +42,6 @@ export class TodosService {
 			const newTodosArray = [...this.todosSubject$.value, todo];
 			this.setDataToLocalStorageUsersSubject(newTodosArray);
 		} else alert('Такой todo уже есть');
-
 	};
 
 	editTodo(todo: ITodo) {
@@ -60,7 +59,7 @@ export class TodosService {
 			this.setDataToLocalStorageUsersSubject(deleteTodo);
 		}
 
-		if (!this.todosSubject$.value.length) {
+		if (!this.todosSubject$.value.length) { 
 			this.localStorage.removeLocalStorage(this.localStorageTodosKey);
 		}
 	};

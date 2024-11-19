@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AsyncPipe, NgFor } from '@angular/common';
-import { TodosCardComponent } from './todos-card/todos-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CreateTodoDialogComponent } from './create-todo-dialog/create-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CreateTodoFormComponent } from './create-todo-form/create-todo-form.component';
 import { TodosService } from '../../services/todos.service';
-import { ITodo } from '../../interfaces/todo.interface';
+import { ITodo } from '../../interfaces/todo.interface'; 
+import { TodosCardComponent } from '../todos-card/todos-card.component';
+import { CreateTodoFormComponent } from '../create-todo-form/create-todo-form.component';
+import { CreateTodoDialogComponent } from '../create-todo-dialog/create-todo-dialog.component';
 
 @Component({
 	selector: 'app-todos-list',

@@ -1,12 +1,12 @@
 import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
-import { BackgroundColorDirective } from './directives/background-color.directive';
-import { CheckAdminOrUser } from './services/user.service';
+import { BackgroundColorDirective } from './shared/directives/background-color.directive';
+import { CheckAdminOrUser } from './domain/admin-page/services/user.service';
 import { map } from 'rxjs';
-import { IUserOrAdmin } from './interfaces/user-admin.interface';
+import { IUserOrAdmin } from './domain/admin-page/interfaces/user-admin.interface';
 import { MatDialog } from '@angular/material/dialog';
-import { AdminOrUserComponent } from './admin-page/admin-or-user/admin-or-user.component';
+import { AdminOrUserComponent } from './domain/admin-page/admin-or-user/admin-or-user.component';
 
 const getNavItem = (name: string) => name;
 const navItem = getNavItem('О Компании');

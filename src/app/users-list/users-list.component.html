@@ -3,7 +3,7 @@
 <app-create-user-form (createUser)="createUser($event)"></app-create-user-form>
 
 <div class="wrapper">
-	<div class="users-cards" shadows="red" *ngFor="let item of usersService.usersObservable$ | async">
+	<div class="users-cards" shadows="red" *ngFor="let item of usersObservable$ | async"> // из шаблона убираем обращение к сервисам и создаем переменную в которой эта сущность из сервиса
 		<app-user-card [user]="item" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user-card>
 	</div>
 </div>

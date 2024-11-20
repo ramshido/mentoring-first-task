@@ -37,7 +37,7 @@ export class CreateTodoDialogComponent {
 		completed: new FormControl('', [Validators.required, completedValidator()]),
 	})
 
-	sendData(data: any): void {
+	private sendData(data: any): void {
 		this.dataSubject.next(data); // Передаем данные через Subject
 	}
 

@@ -43,7 +43,7 @@ export class CreateUserDialogComponent {
 
 	matcher = new MyErrorStateMatcher();
 
-	sendData(data: any): void {
+	private sendData(data: any): void {
 		this.dataSubject.next(data); // Передаем данные через Subject
 	}
 

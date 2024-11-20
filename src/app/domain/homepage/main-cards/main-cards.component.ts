@@ -41,7 +41,7 @@ const car1: TypeCar = 'bmw $100000';
 
 export class MainCardsComponent {
 	
-	isShowBigImg = true;
-	readonly paginations = itemCardsPagination;
+	public isShowBigImg = true;
+	public readonly paginations = itemCardsPagination;
 
 }

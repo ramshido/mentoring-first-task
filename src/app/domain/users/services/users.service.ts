@@ -23,7 +23,7 @@ export class UsersService {
 		this.usersSubject$.next(usersArray);
 	};
 
-	loadUsers() {
+	public loadUsers() {
 		const localStorageUsers = this.localStorage.getDataFromLocalStorage<IUser[]>(this.localStorageUsersKey);
 
 		if (localStorageUsers) {
@@ -35,7 +35,7 @@ export class UsersService {
 		}
 	};
 
-	editUser(editedUser: IUser) {
+	public editUser(editedUser: IUser) {
 		const index = this.usersSubject$.value.findIndex(el => el.id === editedUser.id);
 		this.usersSubject$.value[index] = editedUser;
 
@@ -43,7 +43,7 @@ export class UsersService {
 		this._snackBar.open('Пользователь отредатирован', 'Ок');
 	};
 
-	createUser(user: IUser) {
+	public createUser(user: IUser) {
 		const userExisting = this.usersSubject$.value.find(
 			currentElement => currentElement.email === user.email
 		);
@@ -54,7 +54,7 @@ export class UsersService {
 		} else alert('Такой Email уже есть');
 	};
 
-	deleteUser(userId: number) {
+	public deleteUser(userId: number) {
 		const findUser = this.usersSubject$.value.find(user => user.id === userId);
 		const newUsersArray = this.usersSubject$.value.filter(user => user.id !== userId);
 

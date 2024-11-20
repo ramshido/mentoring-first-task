@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class AdminPageComponent {
   canExit = false;
 
-  onClick() {
+  public onClick() {
     this.canExit = !this.canExit;
   }
 }

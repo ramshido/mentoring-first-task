@@ -20,7 +20,7 @@ export class TodosService {
 		this.todosSubject$.next(todosArray);
 	};
 
-	loadTodos() {
+	public loadTodos() {
 		const loccalStorageTodos = this.localStorage.getDataFromLocalStorage<ITodo[]>(this.localStorageTodosKey);
 
 		if (loccalStorageTodos) {
@@ -33,7 +33,7 @@ export class TodosService {
 		}
 	};
 
-	createTodo(todo: ITodo) {
+	public createTodo(todo: ITodo) {
 		const todoExisting = this.todosSubject$.value.find(
 			currentElement => currentElement.title === todo.title
 		);
@@ -44,14 +44,14 @@ export class TodosService {
 		} else alert('Такой todo уже есть');
 	};
 
-	editTodo(todo: ITodo) {
+	public editTodo(todo: ITodo) {
 		const index = this.todosSubject$.value.findIndex(el => el.id === todo.id);
 		this.todosSubject$.value[index] = todo;
 
 		this.setDataToLocalStorageUsersSubject(this.todosSubject$.value);
 	};
 
-	deleteTodo(todoId: number) {
+	public deleteTodo(todoId: number) {
 		const findTodo = this.todosSubject$.value.find(todo => todo.id === todoId);
 		const deleteTodo = this.todosSubject$.value.filter(todo => todo.id !== todoId);
 

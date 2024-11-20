@@ -8,7 +8,7 @@ import { ITodo } from "../interfaces/todo.interface";
 export class TodosApiService {
 	readonly apiService = inject(HttpClient)
 
-	getTodos() {
+	public getTodos() {
 		return this.apiService.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos');
 	}
 	

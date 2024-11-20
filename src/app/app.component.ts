@@ -6,7 +6,7 @@ import { CheckAdminOrUser } from './domain/admin-page/services/user.service';
 import { map } from 'rxjs';
 import { IUserOrAdmin } from './domain/admin-page/interfaces/user-admin.interface';
 import { MatDialog } from '@angular/material/dialog';
-import { AdminOrUserComponent } from './domain/admin-page/admin-or-user/admin-or-user.component';
+import { AdminOrUserComponent } from './domain/admin-page/components/admin-or-user/admin-or-user.component';
 
 const getNavItem = (name: string) => name;
 const navItem = getNavItem('О Компании');

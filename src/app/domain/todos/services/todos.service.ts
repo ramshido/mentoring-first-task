@@ -15,7 +15,7 @@ export class TodosService {
 
 	private readonly localStorageTodosKey = 'todos';
 
-	private setDataToLocalStorageUsersSubject(todosArray: ITodo[]): void {
+	private setDataToLocalStorageTodosSubject(todosArray: ITodo[]): void {
 		this.localStorage.saveDataToLocalStorage<ITodo[]>(this.localStorageTodosKey, todosArray);
 		this.todosSubject$.next(todosArray);
 	};
@@ -28,7 +28,7 @@ export class TodosService {
 		} else {
 			this.todosApiService.getTodos().subscribe(
 				(todoData: ITodo[]) => {
-					this.setDataToLocalStorageUsersSubject(todoData.slice(1, 11));
+					this.setDataToLocalStorageTodosSubject(todoData.slice(1, 11));
 				});
 		}
 	};
@@ -40,7 +40,7 @@ export class TodosService {
 
 		if (todoExisting === undefined) {
 			const newTodosArray = [...this.todosSubject$.value, todo];
-			this.setDataToLocalStorageUsersSubject(newTodosArray);
+			this.setDataToLocalStorageTodosSubject(newTodosArray);
 		} else alert('Такой todo уже есть');
 	};
 
@@ -48,7 +48,7 @@ export class TodosService {
 		const index = this.todosSubject$.value.findIndex(el => el.id === todo.id);
 		this.todosSubject$.value[index] = todo;
 
-		this.setDataToLocalStorageUsersSubject(this.todosSubject$.value);
+		this.setDataToLocalStorageTodosSubject(this.todosSubject$.value);
 	};
 
 	public deleteTodo(todoId: number) {
@@ -56,7 +56,7 @@ export class TodosService {
 		const deleteTodo = this.todosSubject$.value.filter(todo => todo.id !== todoId);
 
 		if (findTodo && confirm('Вы действительно хотите удалить этот todo?')) {
-			this.setDataToLocalStorageUsersSubject(deleteTodo);
+			this.setDataToLocalStorageTodosSubject(deleteTodo);
 		}
 
 		if (!this.todosSubject$.value.length) { 

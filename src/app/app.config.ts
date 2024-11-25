@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -6,8 +6,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
-import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
+import { usersReducer } from './domain/users/state/users.reducer';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { todosReducer } from './domain/todos/state/todos.reducer';
 
 
 export const appConfig: ApplicationConfig = {
@@ -15,21 +17,20 @@ export const appConfig: ApplicationConfig = {
 		provideRouter(routes),
 		provideHttpClient(),
 		provideAnimationsAsync(),
-		{ // делаем обоертку hint у инпутов mat-form-field по дефолту скрытыми, во время инвалидности формы показать
-			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
+		{
+			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 			useValue: {
 				subscriptSizing: 'dynamic',
 			},
 		},
-		{ // делаем автофокус у кнопок или инпутов в диалоговом окне angular material по дефолту отключенными 
-      provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: { autoFocus: false } as MatDialogConfig
-    },
-		provideEffects(
-
-		),
-		provideStore(
-
-		),
+		{
+			provide: MAT_DIALOG_DEFAULT_OPTIONS,
+			useValue: { autoFocus: false } as MatDialogConfig
+		},
+		provideStore({
+			todos: todosReducer,
+			users: usersReducer,
+		}),
+		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 	]
 };

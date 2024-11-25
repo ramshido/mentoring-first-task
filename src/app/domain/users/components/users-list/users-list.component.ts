@@ -8,8 +8,12 @@ import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "../create-user-dialog/create-user-dialog.component";
 import { CreateUserForm } from "../create-user-form/create-user-form.component";
 import { ShadowSetDirective } from "../../../../shared/directives/shadows.directive";
-import { UsersService } from "../../services/users.service";
 import { ICreateUser, IUser } from "../../interfaces/user.interface";
+import { Store } from "@ngrx/store";
+import { UsersApiService } from "../../services/users-api.service";
+import { UsersActions } from "../../state/users.actions";
+import { selectUsers } from "../../state/users.selectors";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
 	selector: 'app-users-list',
@@ -20,33 +24,40 @@ import { ICreateUser, IUser } from "../../interfaces/user.interface";
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent {
-	private readonly usersService = inject(UsersService);
 	private readonly dialog = inject(MatDialog);
-	public readonly users$ = this.usersService.usersObservable$;
-	public usersObservable$ = this.usersService.usersObservable$;
+	private readonly store = inject(Store);
+	private readonly usersApiService = inject(UsersApiService);
+	public readonly users$ = this.store.select(selectUsers);
+	private readonly _snackBar = inject(MatSnackBar);
 
 	constructor() {
-		this.usersService.loadUsers();
+		this.usersApiService.getUsers().subscribe((usersArray: IUser[]) => {
+			this.store.dispatch(UsersActions.set({ users: usersArray }));
+		});
 	}
 
 	public deleteUser(id: number) {
-		this.usersService.deleteUser(id);
+		if (confirm('Вы точно хотите удалить карточку пользователя?')) {
+			this.store.dispatch(UsersActions.delete({ id }));
+			this._snackBar.open('Пользователь удален', 'Ок').afterDismissed().subscribe(() => { });
+		}
 	}
 
 	public createUser(user: ICreateUser) {
-		this.usersService.createUser(user);
+		this.store.dispatch(UsersActions.create({ user }));
+		this._snackBar.open('Пользователь создан', 'Ок');
 	}
 
-	public editUser(formDialogValue: IUser) {
-		this.usersService.editUser(formDialogValue);
-		console.log('Обновленные данные пользователя', formDialogValue);
+	public editUser(user: IUser) {
+		this._snackBar.open('Пользователь отредатирован', 'Ок');
+		this.store.dispatch(UsersActions.edit({ user }));
 	}
 
 	public openDialog(): void {
 		const dialogRef = this.dialog.open(CreateUserDialogComponent, {
 			width: '600px',
 		});
-		
+
 		const dialogComponentInstance = dialogRef.componentInstance; // .componentInstance — это свойство объекта MatDialogRef, которое предоставляет доступ к экземпляру компонента, используемого в диалоговом окне.
 
 		dialogComponentInstance.dataSubject.subscribe(data => {

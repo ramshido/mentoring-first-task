@@ -11,8 +11,8 @@ import { ShadowSetDirective } from "../../../../shared/directives/shadows.direct
 import { ICreateUser, IUser } from "../../interfaces/user.interface";
 import { Store } from "@ngrx/store";
 import { UsersApiService } from "../../services/users-api.service";
-import { UsersActions } from "../../state/users.actions";
-import { selectUsers } from "../../state/users.selectors";
+import { UsersActions } from "../../+state/users.actions";
+import { selectUsers } from "../../+state/users.selectors";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({

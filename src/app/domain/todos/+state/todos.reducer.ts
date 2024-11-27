@@ -14,13 +14,7 @@ export const todosReducer = createReducer(
 	})),
 	on(TodosActions.edit, (state, payLoad) => ({
 		...state,
-		todos: state.todos.map((todo) => {
-			if (todo.id === payLoad.todo.id) {
-				return payLoad.todo;
-			} else {
-				return todo;
-			}
-		}),
+		todos: state.todos.map((todo) => (todo.id === payLoad.todo.id ? payLoad.todo : todo)),
 	})),
 	on(TodosActions.create, (state, payLoad) => ({
 		...state,

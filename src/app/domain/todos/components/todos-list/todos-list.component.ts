@@ -10,9 +10,9 @@ import { TodosCardComponent } from '../todos-card/todos-card.component';
 import { CreateTodoFormComponent } from '../create-todo-form/create-todo-form.component';
 import { CreateTodoDialogComponent } from '../create-todo-dialog/create-todo-dialog.component';
 import { TodosApiService } from '../../services/todos-api.service';
-import { TodosActions } from '../../state/todos.actions';
+import { TodosActions } from '../../+state/todos.actions';
 import { Store } from '@ngrx/store';
-import { selectFeature } from '../../state/todos.selectors';
+import { selectFeature } from '../../+state/todos.selectors';
 
 @Component({
 	selector: 'app-todos-list',

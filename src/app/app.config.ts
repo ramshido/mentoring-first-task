@@ -7,9 +7,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
 import { provideStore } from '@ngrx/store';
-import { usersReducer } from './domain/users/state/users.reducer';
+import { usersReducer } from './domain/users/+state/users.reducers';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { todosReducer } from './domain/todos/state/todos.reducer';
+import { todosReducer } from './domain/todos/+state/todos.reducer';
 
 
 export const appConfig: ApplicationConfig = {

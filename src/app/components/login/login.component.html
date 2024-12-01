@@ -1,0 +1,46 @@
+<section class="login">
+	<div class="login-box">
+		<div class="container">
+			<h2 class="login-box__title">Login</h2>
+			<p class="login-box__subtitle">Please enter your login and password!</p>
+
+			<form class="login-box__form" [formGroup]="form">
+				<mat-form-field class="login-box__form-field-input">
+					<input matInput class="login-box__form-input" type="email" formControlName="email">
+					<label class="login-box__form-label">Email</label>
+					<mat-error class="login-box__form-input_mat-error"
+						*ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+						Email is not correct
+					</mat-error>
+					<mat-error class="login-box__form-input_mat-error" *ngIf="form.controls['email'].hasError('required')">
+						Email is required
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="login-box__form-field-input">
+					<input matInput class="login-box__form-input" type="password" formControlName="password">
+					<label class="login-box__form-label">Password</label>
+					<mat-error class="login-box__form-input_mat-error"
+						*ngIf="form.controls['password'].hasError('minlength') && !form.controls['password'].hasError('required')">
+						Пароль слишком короткий
+					</mat-error>
+					<mat-error class="login-box__form-input_mat-error" *ngIf="form.controls['password'].hasError('required')">
+						Поле не заполнено
+					</mat-error>
+				</mat-form-field>
+
+				<button mat-flat-button class="login-box__form-btn" type="submit"
+					[disabled]="form.invalid" (click)="submitLogin()">
+					<mat-icon class="login-box__form-btn-icon-login" matSuffix>login</mat-icon>
+					Login
+				</button>
+			</form>
+
+			<div class="login-box__no-account">
+				<span>
+					Don't have an account? <a class="login-box__sign-up-link">Sign Up</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</section>

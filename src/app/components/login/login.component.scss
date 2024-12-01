@@ -1,0 +1,202 @@
+.login {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&-box {
+		background-color: #1F2125;
+		width: 25%;
+		min-height: 500px;
+		height: 70%;
+		border-radius: 25px;
+		padding: 50px 0 30px;
+		position: relative;
+
+		&__title {
+			color: #ffffff;
+			text-align: center;
+			font-size: 40px;
+			font-weight: 600;
+			text-transform: uppercase;
+			margin-bottom: 15px;
+		}
+
+		&__subtitle {
+			color: #7B7D81;
+			text-align: center;
+			font-size: 20px;
+			font-weight: 600;
+			margin-bottom: 50px;
+		}
+
+		&__form {
+
+			&-field-input {
+				display: block;
+				width: 90%;
+				margin: 0 auto;
+
+				&+& {
+					margin-top: 50px;
+				}
+			}
+
+			&-label {
+				display: block;
+				color: #ffffff;
+				text-align: center;
+				font-size: 20px;
+				font-weight: 500;
+			}
+
+			&-input {
+				border: none;
+				background-color: #ffffff;
+				height: 40px !important;
+				border-radius: 5px;
+				padding: 5px !important;
+				margin-bottom: 30px;
+
+				&_mat-error {
+					text-align: center;
+					margin-bottom: 10px;
+				}
+			}
+
+			&-btn {
+				display: block;
+				position: absolute;
+				bottom: 150px;
+				left: 50%;
+				transform: translateX(-50%);
+				font-size: 25px;
+				width: 180px;
+				height: 2em;
+
+				&-icon-login {
+					width: 100px;
+				}
+			}
+			.mat-mdc-unelevated-button:not(:disabled) {
+				color: #ffffff;
+				background-color: transparent;
+				border: 1.5px solid #ffffff;
+				transition: all .5s ease;
+
+				&:hover {
+					background-color: #ffffff;
+					color: #000000;
+				}
+			}
+			.mat-mdc-unelevated-button[disabled], .mat-mdc-unelevated-button.mat-mdc-button-disabled {
+				color: #686868;
+			}
+		}
+		&__no-account {
+			position: absolute;
+			bottom: 50px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: #ffffff; 
+			font-size: 20px;
+			font-weight: 500;
+			text-wrap: nowrap;
+		}
+		&__sign-up-link {
+			color: #7B7D81;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+}
+
+.mat-mdc-unelevated-button>.mat-icon {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+	top: 2px;
+}
+
+@media (max-width: 1850px) {
+	.login {
+		&-box {
+			width: 30%;
+		}
+	}
+}
+
+@media (max-width: 1500px) {
+	.login {
+		&-box {
+			width: 40%;
+		}
+	}
+}
+
+@media (max-width: 1160px) {
+	.login {
+		&-box {
+			width: 50%;
+		}
+	}
+}
+
+@media (max-width: 970px) {
+	.login {
+		&-box {
+			width: 60%;
+		}
+	}
+}
+
+@media (max-height: 1070px) {
+	.login {
+		&-box {
+			&__form {
+				&-btn {
+					bottom: 105px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-height: 980px) {
+	.login {
+		&-box {
+			&__form {
+				&-field-input {
+					&+& {
+						margin-top: 0;
+					}
+				}
+			}
+			&__no-account {
+				bottom: 30px;
+			}
+		}
+	}
+}
+
+@media (max-height: 880px) {
+	.login {
+		&-box {
+			&__form {
+				&-input {
+					margin-bottom: 15px;
+
+					&_mat-error {
+						margin-bottom: 0;
+					}
+				}
+				&-btn {
+					bottom: 90px;
+				}
+			}
+			&__subtitle {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}

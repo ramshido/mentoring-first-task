@@ -30,9 +30,35 @@ input,button,textarea{font-family:inherit;}
 input::-ms-clear{display: none;}
 button{cursor: pointer;}
 button::-moz-focus-inner {padding:0;border:0;}
-a, a:visited{text-decoration: none;}
+a, a:visited{text-decoration: none; color: inherit;}
 a:hover{text-decoration: none;}
 ul li{list-style: none;}
 img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+* {
+	font-family: 'Inter', sans-serif;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+	background-color: #1F2125 !important;
+}
+
+.mdc-text-field--no-label .mat-mdc-form-field-infix {
+	padding-bottom: 0 !important;
+}
+
+.mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple::before,
+.mdc-line-ripple.mdc-line-ripple--active, .mdc-line-ripple.mdc-line-ripple--deactivating {
+	display: none;
+}

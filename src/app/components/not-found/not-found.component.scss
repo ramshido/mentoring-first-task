@@ -1,0 +1,25 @@
+.not-found {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.not-found-box {
+	padding: 10px;
+	width: 500px;
+	height: 100px;
+	margin: 0 auto;
+	background-color: #1F2125; 
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ffffff;
+	font-size: 20px;
+	&__back {
+		color: #7B7D81;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}

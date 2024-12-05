@@ -7,13 +7,15 @@
 			</div>
 			<ul class="header__nav__right-box">
 				<li class="header__nav__right-box__item">
-					<a class="header__nav__right-box__item__link" routerLinkActive="active" routerLink="./home">Home</a>
+					<a class="header__nav__right-box__item__link" routerLink="./home" routerLinkActive="active">Home</a>
 				</li>
 				<li class="header__nav__right-box__item">About</li>
 				<li class="header__nav__right-box__item">
 					<a class="header__nav__right-box__item__link" routerLinkActive="active" routerLink="./contacts">Personal Contacts</a>
 				</li>
-				<li class="header__nav__right-box__item">Logout</li>
+				<button class="header__nav__right-box__item" (click)="logout()">
+					Logout
+				</button>
 			</ul>
 		</nav>
 	</div>

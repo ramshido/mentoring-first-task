@@ -48,6 +48,10 @@
 						background-color: #005fd3;
 					}
 				}
+				&__link.active {
+					border-bottom: 5px solid #0374ff;
+					padding-bottom: 5px;
+				}
 			}
 		}
 	}

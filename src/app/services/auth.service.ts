@@ -13,10 +13,6 @@ interface IUser {
 export class AuthService {
 	private readonly router = inject(Router);
 
-	constructor() {
-		
-	}
-
 	public setToken(token: string): void {
 		localStorage.setItem('token', token);
 	}
@@ -25,7 +21,11 @@ export class AuthService {
 		return localStorage.getItem('token');
 	}
 
-	private isLoggedIn(): boolean {
+	public removeToken(): void {
+		localStorage.removeItem('token');
+	}
+
+	public isLoggedIn(): boolean {
 		return this.getToken() !== null;
 	}
 
@@ -35,5 +35,9 @@ export class AuthService {
 			return of(true);
 		}
 		return throwError(() => new Error('Failed Login'));
+	}
+
+	public logout() {
+		this.router.navigate(['login']);
 	}
 }

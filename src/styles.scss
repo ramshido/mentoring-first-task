@@ -62,3 +62,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mdc-line-ripple.mdc-line-ripple--active, .mdc-line-ripple.mdc-line-ripple--deactivating {
 	display: none;
 }
+
+.custom-styles-progress-bar {
+	--mdc-linear-progress-active-indicator-color: #000000;
+	--mdc-linear-progress-track-color: #ffffff;
+	--mdc-linear-progress-active-indicator-height: 10px;
+	--mdc-linear-progress-track-height: 10px;
+}

@@ -40,10 +40,16 @@ export class LoginComponent {
 	});
 
 	submitLogin() {
-		this.authService.login(this.form.getRawValue()).subscribe({
+		this.authService.login(this.form.getRawValue()).subscribe({ // Подписка на форму, 
 			next: () => this.router.navigate(['admin']),
 			error: (err) => alert(err.message),
 		});
 		this.form.reset();
+	}
+
+	ngOnInit() {
+		if (this.authService.isLoggedIn()) {
+			this.router.navigate(['admin']);
+		}
 	}
 }

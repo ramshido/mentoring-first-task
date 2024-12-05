@@ -1,1 +1,14 @@
-<p>contacts works!</p>
+<mat-progress-bar *ngIf="isLoading | async" mode="indeterminate" class="custom-styles-progress-bar"></mat-progress-bar>
+
+<div class="contacts">
+	<div class="container">
+		<div class="contacts__wrapper">
+			<div class="contacts__wrapper__grid" *ngFor="let user of persoanlList | async">
+				<div class="data-box">
+					<h3>{{user.name}}</h3>
+					<button class="contacts__btn" [routerLink]="['user', user.id]">Details</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,7 +8,6 @@ import { FooterComponent } from '../footer/footer.component';
   imports: [
 		HeaderComponent,
 		RouterOutlet,
-		FooterComponent
 	],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss'

@@ -1,4 +1,3 @@
-
 <header class="header">
 	<div class="container">
 		<nav class="header__nav">
@@ -11,7 +10,8 @@
 				</li>
 				<li class="header__nav__right-box__item">About</li>
 				<li class="header__nav__right-box__item">
-					<a class="header__nav__right-box__item__link" routerLinkActive="active" routerLink="./contacts">Personal Contacts</a>
+					<a class="header__nav__right-box__item__link" routerLinkActive="active" routerLink="./contacts">Personal
+						Contacts</a>
 				</li>
 				<button class="header__nav__right-box__item" (click)="logout()">
 					Logout
@@ -20,3 +20,5 @@
 		</nav>
 	</div>
 </header>
+
+<mat-progress-bar *ngIf="isLoading | async" mode="indeterminate" class="custom-styles-progress-bar"></mat-progress-bar>

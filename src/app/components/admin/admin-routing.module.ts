@@ -12,7 +12,7 @@ const routes: Routes = [
 		path: '',
 		component: AdminDashboardComponent,
 		children: [
-			{ 
+			{
 				path: 'contacts',
 				component: ContactsComponent,
 				resolve: {

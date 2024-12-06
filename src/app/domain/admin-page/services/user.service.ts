@@ -7,14 +7,13 @@ import { IUserOrAdmin } from "../interfaces/user-admin.interface";
 })
 export class CheckAdminOrUser {
 	private userOrAdminSubject$ = new BehaviorSubject<IUserOrAdmin | null>(null);
+	public userOrAdmin$ = this.userOrAdminSubject$.asObservable();
 
 	private user: IUserOrAdmin = {
 		name: 'Vasya',
 		email: 'vXqFP@example.com',
 		isAdmin: false,
 	};
-
-	public userOrAdmin$ = this.userOrAdminSubject$.asObservable();
 
 	public loginAsAdmin(): void {
 		this.userOrAdminSubject$.next({

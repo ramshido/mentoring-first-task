@@ -1,4 +1,4 @@
-import { ApplicationConfig, isDevMode } from '@angular/core';
+import { ApplicationConfig, effect, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,6 +10,8 @@ import { provideStore } from '@ngrx/store';
 import { usersReducer } from './domain/users/state/users.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { todosReducer } from './domain/todos/state/todos.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { usersEffects } from './domain/users/state/users.effects';
 
 
 export const appConfig: ApplicationConfig = {
@@ -30,6 +32,9 @@ export const appConfig: ApplicationConfig = {
 		provideStore({
 			todos: todosReducer,
 			users: usersReducer,
+		}),
+		provideEffects({
+			usersEffects: usersEffects
 		}),
 		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 	]

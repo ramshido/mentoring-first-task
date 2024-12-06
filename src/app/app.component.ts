@@ -75,7 +75,7 @@ export class AppComponent {
           width: '600px',
         })
         .afterClosed()
-        .subscribe((result: any) => {
+        .subscribe((result: boolean) => {
           if (result === true) {
             this.userService.loginAsAdmin();
           } else if (result === false) {

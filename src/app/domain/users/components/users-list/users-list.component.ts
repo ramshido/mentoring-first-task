@@ -31,9 +31,7 @@ export class UsersListComponent {
 	private readonly _snackBar = inject(MatSnackBar);
 
 	constructor() {
-		this.usersApiService.getUsers().subscribe((usersArray: IUser[]) => {
-			this.store.dispatch(UsersActions.set({ users: usersArray }));
-		});
+		this.store.dispatch(UsersActions.set({ users: '[Users] loading'}));
 	}
 
 	public deleteUser(id: number) {

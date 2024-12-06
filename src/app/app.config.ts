@@ -9,7 +9,11 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/d
 import { provideStore } from '@ngrx/store';
 import { usersReducer } from './domain/users/+state/users.reducers';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideEffects } from '@ngrx/effects';
 import { todosReducer } from './domain/todos/+state/todos.reducer';
+import { usersEffects } from './domain/users/+state/users.effects';
+import { todosEffects } from './domain/todos/+state/todos.effects';
+
 
 
 export const appConfig: ApplicationConfig = {
@@ -30,6 +34,10 @@ export const appConfig: ApplicationConfig = {
 		provideStore({
 			todos: todosReducer,
 			users: usersReducer,
+		}),
+		provideEffects({
+			users: usersEffects,
+			todos: todosEffects,
 		}),
 		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 	]

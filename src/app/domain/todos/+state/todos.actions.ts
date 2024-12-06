@@ -4,7 +4,8 @@ import { ITodo } from "../interfaces/todo.interface";
 export const TodosActions = createActionGroup({
 	source: 'Todos',
 	events: {
-		'set': props<{ todos: ITodo[] }>(),
+		'set': props<{ todos: string }>(),
+		'loadTodosSuccess': props<{ todos: ITodo[] }>(),
 		'edit': props<{ todo: ITodo }>(),
 		'create': props<{ todo: ITodo }>(),
 		'delete': props<{ id: number }>(),

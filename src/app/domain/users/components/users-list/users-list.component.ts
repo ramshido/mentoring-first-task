@@ -10,7 +10,6 @@ import { CreateUserForm } from "../create-user-form/create-user-form.component";
 import { ShadowSetDirective } from "../../../../shared/directives/shadows.directive";
 import { ICreateUser, IUser } from "../../interfaces/user.interface";
 import { Store } from "@ngrx/store";
-import { UsersApiService } from "../../services/users-api.service";
 import { UsersActions } from "../../+state/users.actions";
 import { selectUsers } from "../../+state/users.selectors";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -26,14 +25,11 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class UsersListComponent {
 	private readonly dialog = inject(MatDialog);
 	private readonly store = inject(Store);
-	private readonly usersApiService = inject(UsersApiService);
 	public readonly users$ = this.store.select(selectUsers);
 	private readonly _snackBar = inject(MatSnackBar);
 
 	constructor() {
-		this.usersApiService.getUsers().subscribe((usersArray: IUser[]) => {
-			this.store.dispatch(UsersActions.set({ users: usersArray }));
-		});
+		this.store.dispatch(UsersActions.set({ users: '[Users] loading'}));
 	}
 
 	public deleteUser(id: number) {

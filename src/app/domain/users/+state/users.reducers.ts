@@ -8,7 +8,7 @@ const initialState: { users: IUser[] } = {
 
 export const usersReducer = createReducer(
 	initialState,
-	on(UsersActions.set, (state, payLoad) => ({
+	on(UsersActions.loadUsersSuccess, (state, payLoad) => ({
 		...state,
 		users: payLoad.users,
 	})),

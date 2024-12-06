@@ -12,6 +12,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { todosReducer } from './domain/todos/state/todos.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { usersEffects } from './domain/users/state/users.effects';
+import { todosEffects } from './domain/todos/state/todos.effects';
 
 
 export const appConfig: ApplicationConfig = {
@@ -34,7 +35,8 @@ export const appConfig: ApplicationConfig = {
 			users: usersReducer,
 		}),
 		provideEffects({
-			usersEffects: usersEffects
+			users: usersEffects,
+			todos: todosEffects,
 		}),
 		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 	]

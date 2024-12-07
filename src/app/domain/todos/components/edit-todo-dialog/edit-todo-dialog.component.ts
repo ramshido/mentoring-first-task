@@ -38,7 +38,7 @@ export class EditTodoDialogComponent {
 	get todoWithUpdatedFields() {
 		return {
 			...this.form.value,
-			completed: (this.form.controls['completed'].value === 'Да') ? true : false
+			completed: (this.form.controls['completed'].value?.toLowerCase() === 'Да'.toLowerCase()) ? true : false
 		}
 	}
 }

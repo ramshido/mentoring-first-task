@@ -39,53 +39,54 @@ export class AppComponent {
 	today: number = Date.now(); // для DatePipe, чтобы работал
 	public readonly userService = inject(CheckAdminOrUser);
 	private readonly router = inject(Router);
-  public status: string = '';
-  public isShowAdminBtn: boolean = false;
+	public status: string = '';
+	public isShowAdminBtn: boolean = false;
 	private readonly dialog = inject(MatDialog);
 
 	public userRole$ = this.userService.userOrAdmin$.pipe(
-    map((data: IUserOrAdmin | null) => {
-      // for (let key in data) {
-      // 	if (key === 'user') {
-      // 		this.status = 'Войти';
-      // 		return true;
-      // 	}
-      // }
-      // this.status = 'Выйти';
-      // return false;
+		map((data: IUserOrAdmin | null) => {
+			// for (let key in data) {
+			// 	if (key === 'user') {
+			// 		this.status = 'Войти';
+			// 		return true;
+			// 	}
+			// }
+			// this.status = 'Выйти';
+			// return false;
 
-      // или:
+			// или:
 
-      if (data === null) {
-        this.status = 'Войти';
-        this.isShowAdminBtn = false;
-        return true;
-      } else {
-        this.status = 'Выйти';
-        this.isShowAdminBtn = true;
-        return false;
-      }
-    }),
-  );
+			if (data === null) {
+				this.status = 'Войти';
+				this.isShowAdminBtn = false;
+				return true;
+			} else {
+				this.status = 'Выйти';
+				this.isShowAdminBtn = true;
+				return false;
+			}
+		}),
+	);
 
 	public openDialog(): void {
-    if (this.status === 'Войти') {
-      this.dialog
-        .open(AdminOrUserComponent, {
-          width: '600px',
-        })
-        .afterClosed()
-        .subscribe((result: boolean) => {
-          if (result === true) {
-            this.userService.loginAsAdmin();
-          } else if (result === false) {
-            this.userService.loginAsUser();
-          }
-        });
-    } else if (this.status === 'Выйти') {
-      confirm('Вы точно хотите выйти?')
-        ? (this.userService.logout(), this.router.navigate(['']))
-        : null;
-    }
-  }
+		if (this.status === 'Войти') {
+			this.dialog
+				.open(AdminOrUserComponent, {
+					width: '600px',
+				})
+				.afterClosed()
+				.subscribe((result: boolean) => {
+					if (result === true) {
+						this.userService.loginAsAdmin();
+					} else if (result === false) {
+						this.userService.loginAsUser();
+					}
+				});
+		} else if (this.status === 'Выйти') {
+			confirm('Вы точно хотите выйти?')
+				? (this.userService.logout(), this.router.navigate(['']))
+				: null;
+		}
+	}
 }
+
